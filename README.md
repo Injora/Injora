@@ -118,14 +118,14 @@ const soulReaper = {
   <img width="100%" src="https://raw.githubusercontent.com/Injora/Injora/output/activity-graph.svg" alt="Activity graph"/>
 </p>
 
-<!-- ══════════════════════════ SNAKE ══════════════════════════ -->
-<h2 align="center">🐍 Hollow Hunt</h2>
+<!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
+<h2 align="center">🌙 Getsuga Tenshō</h2>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/github-snake-dark.svg"/>
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/github-snake.svg"/>
-    <img alt="Contribution snake" src="https://raw.githubusercontent.com/Injora/Injora/output/github-snake.svg"/>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho-dark.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
+    <img alt="Getsuga Tensho slashing through the contribution graph" src="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
   </picture>
 </p>
 
