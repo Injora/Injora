@@ -19,12 +19,12 @@ from PIL import Image, ImageDraw
 
 # ── Canvas ───────────────────────────────────────────────────────────────────
 SCALE = 3
-W, H = 360, 100               # logical pixels -> 1080x300 output
+W, H = 346, 78                # logical pixels -> 1038x234 output
 FPS = 20
 FRAMES = 90                   # 4.5 s loop
-GRID_X, GRID_Y = 82, 52       # top-left of the contribution grid
+GRID_X, GRID_Y = 76, 25       # top-left of the contribution grid
 CELL, PITCH = 4, 5
-HERO_X, HERO_Y = 18, 51       # top-left of Ichigo's body sprite
+HERO_X, HERO_Y = 18, 24       # top-left of Ichigo's body sprite
 
 # ── Palette ──────────────────────────────────────────────────────────────────
 C = {
@@ -34,6 +34,7 @@ C = {
     "w": (170, 170, 190), "B": (32, 32, 48), "b": (66, 66, 98), "R": (138, 42, 42),
     "N": (96, 60, 36),
     "blade": (184, 194, 207), "bladeDark": (74, 82, 96), "bladeEdge": (255, 255, 255),
+    "red": (230, 36, 28), "redHi": (255, 96, 70), "redLo": (120, 8, 10),
     "orange": (255, 106, 0), "orangeHi": (255, 176, 102), "orangeLo": (180, 70, 0),
     "blue": (30, 58, 138), "blueHi": (59, 99, 208), "core": (5, 5, 10), "white": (245, 245, 245),
 }
@@ -83,15 +84,16 @@ KWWWWK.......KWWWWWK....
 KNNNNNK......KNNNNNNK...
 """.strip("\n").splitlines()
 SHOULDER = (14, 20)  # front shoulder, body-local
+BACK_SHOULDER = (6, 21)
 
 # Pose = (grip x, grip y, blade angle in degrees; 0 = pointing right, -90 = up)
 POSES = {
     "idle":   (19, 27, -58),
-    "charge": (12, 5, -116),
-    "windup": (17, 9, -100),
+    "charge": (13, 14, -128),
+    "windup": (17, 17, -100),
     "swing":  (23, 24, 8),
     "follow": (23, 28, 24),
-    "finish": (22, 29, 34),
+    "finish": (22, 29, 28),
 }
 BLADE_LEN, BLADE_W, HILT_LEN = 34, 6, 7
 
@@ -153,6 +155,15 @@ def draw_hero(pose, bob=0, flutter=0, glow=0.0, silhouette=None, rng=None):
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
 
+    blade, back, edge, hilt, tip, pommel = blade_polys(ox + gx, oy + gy, ang)
+    hand_front = (round(ox + gx), round(oy + gy))
+    bx, by = rot(-4, 0, ang)
+    hand_back = (round(ox + gx + bx), round(oy + gy + by))
+
+    # back arm (behind the body)
+    bsx, bsy = ox + BACK_SHOULDER[0], oy + BACK_SHOULDER[1]
+    d.line([(bsx, bsy), hand_back], fill=(*C["B"], 255), width=4)
+
     # body sprite
     for y, row in enumerate(BODY):
         for x, ch in enumerate(row):
@@ -164,7 +175,6 @@ def draw_hero(pose, bob=0, flutter=0, glow=0.0, silhouette=None, rng=None):
             layer.putpixel((ox + 20 + (y - 30), oy + y), (*C["B"], 255))
 
     # blade glow (charge) drawn behind the sword
-    blade, back, edge, hilt, tip, pommel = blade_polys(ox + gx, oy + gy, ang)
     if glow > 0:
         g = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         gd = ImageDraw.Draw(g)
@@ -190,7 +200,11 @@ def draw_hero(pose, bob=0, flutter=0, glow=0.0, silhouette=None, rng=None):
     for i in range(6):
         wave = math.sin((i + flutter * 2) * 0.9) * 1.2
         d.point((cx - 1 - i, cy + 1 + i // 2 + wave), fill=(*C["W"], 255))
-    d.rectangle([hx - 1, hy - 1, hx + 1, hy + 1], fill=(*C["S"], 255))
+    # two outlined fists gripping the hilt
+    for fx, fy in (hand_back, hand_front):
+        d.rectangle([fx - 2, fy - 2, fx + 2, fy + 2], fill=(*C["K"], 255))
+        d.rectangle([fx - 1, fy - 1, fx + 1, fy + 1], fill=(*C["S"], 255))
+        d.line([(fx - 1, fy + 1), (fx + 1, fy + 1)], fill=(*C["s"], 255))
 
     layer = outline(outline(layer), C["rim"])
     if silhouette:
@@ -280,6 +294,27 @@ def draw_getsuga(arr, cx, cy, ry, f, streaks):
     lead = cres & ~erode(outer, 1) & (XX > cx + rx * 0.5)
     paint(arr, lead, C["white"] if f % 2 else C["orangeHi"])
     return cx + rx  # leading edge
+
+
+# ── Red reiatsu aura ─────────────────────────────────────────────────────────
+def draw_aura(arr, mask, f, charging, rng):
+    pulse = (math.sin(f / FPS * 2 * math.pi * 1.6) + 1) / 2        # ~1.6 pulses per second
+    r = 2 + round(pulse * 2) + (2 if charging else 0)
+    inner = dilate(mask, 1)
+    mid = dilate(mask, max(2, r - 1))
+    outer = dilate(mask, r)
+    checker = (XX + YY + f) % 2 == 0
+    paint(arr, outer & ~mid & checker, C["redLo"])
+    paint(arr, mid & ~inner, C["red"] if pulse > 0.35 or charging else C["redLo"])
+    paint(arr, inner & ~mask & ((XX * 3 + YY + f) % 4 == 0), C["redHi"])
+    # flame licks rising off the aura
+    ys, xs = np.nonzero(outer & ~mid)
+    if len(xs):
+        for i in rng.sample(range(len(xs)), min(len(xs), 10 if charging else 5)):
+            x, y = xs[i], ys[i]
+            for k in range(rng.randint(1, 4)):
+                if y - k >= 0:
+                    arr[y - k, x] = C["red"] if k < 2 else C["redLo"]
 
 
 # ── Frames ───────────────────────────────────────────────────────────────────
@@ -407,6 +442,8 @@ def render(weeks):
                 alive.append(p)
         particles = alive
 
+        if not impact:
+            draw_aura(arr, np.array(hero)[:, :, 3] > 0, f, charging=16 <= f < 30, rng=rng)
         img = Image.fromarray(arr)
         img.paste(hero, (0, 0), hero)
         if 34 <= f < 72:
