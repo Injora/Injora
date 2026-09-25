@@ -1,6 +1,6 @@
 """Blood pool footer: a pool of blood on a subwoofer. Every bass hit makes the
 surface spike, droplets burst up and fall back with splashes, and ripples spread
-out from the centre. Pure SVG/SMIL so it animates inside a GitHub README <img>.
+out from the centre. Pure SVG + CSS keyframes (no SMIL/JS) so it animates inside a GitHub README <img>.
 
 Usage: python blood_pool.py <out.svg>
 """
@@ -53,21 +53,14 @@ def surface_path(t, closed):
     return d
 
 
-def fmt(v):
-    return ";".join(v)
-
-
-def anim(attr, values, key_times=None, calc="linear", extra=""):
-    kt = f' keyTimes="{";".join(f"{k:.4f}" for k in key_times)}"' if key_times else ""
-    return (f'<animate attributeName="{attr}" dur="{DUR}s" repeatCount="indefinite" '
-            f'calcMode="{calc}" values="{fmt(values)}"{kt}{extra}/>')
+def pct(t):
+    return f"{100 * t / DUR:.2f}%"
 
 
 def build():
-    out = []
-    add = out.append
-    add(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">')
-    add(f'''<defs>
+    css, body = [], []
+    add = body.append
+    defs = f"""<defs>
   <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0" stop-color="{T["crimson"]}"/>
     <stop offset="0.12" stop-color="{T["deepRed"]}"/>
@@ -91,37 +84,44 @@ def build():
     <stop offset="0.6" stop-color="{T["deepRed"]}" stop-opacity="0.15"/>
     <stop offset="1" stop-color="{T["bgDeep"]}" stop-opacity="0"/>
   </radialGradient>
-</defs>''')
-
-    frames = [i * DUR / 48 for i in range(49)]
-    kts = [t / DUR for t in frames]
+</defs>"""
+    css.append(f".a{{animation-duration:{DUR}s;animation-iteration-count:infinite}}"
+               ".c{transform-box:fill-box;transform-origin:center}")
 
     # glow pulsing with the bass
-    glow_op = [f"{0.25 + 0.75 * math.exp(-since_boom(t) * 4):.3f}" for t in frames]
-    add(f'<ellipse cx="{W / 2}" cy="{Y0}" rx="{W * 0.55}" ry="70" fill="url(#glow)">{anim("opacity", glow_op, kts)}</ellipse>')
+    steps = [i * DUR / 24 for i in range(25)]
+    css.append("@keyframes glow{" + "".join(
+        f"{pct(t)}{{opacity:{0.25 + 0.75 * math.exp(-since_boom(t) * 4):.2f}}}" for t in steps) + "}")
+    add(f'<ellipse class="a" style="animation-name:glow" cx="{W / 2}" cy="{Y0}" rx="{W * 0.55}" ry="70" fill="url(#glow)"/>')
 
+    # surface flipbook: one path per frame, each visible only in its own slot
+    n = 48
     add('<g mask="url(#fade)">')
-    # pool body + glossy surface line
-    body = [surface_path(t, True) for t in frames]
-    line = [surface_path(t, False) for t in frames]
-    add(f'<path fill="url(#pool)" d="{body[0]}">{anim("d", body, kts)}</path>')
-    add(f'<path fill="none" stroke="{T["accent"]}" stroke-width="1.6" stroke-opacity="0.75" d="{line[0]}">{anim("d", line, kts)}</path>')
+    for i in range(n):
+        t = i * DUR / n
+        a, b = 100 * i / n, 100 * (i + 1) / n
+        kf = f"0%,{a:.3f}%{{opacity:0}}" if i else ""
+        kf += f"{a:.3f}%,{b - 0.001:.3f}%{{opacity:1}}{b:.3f}%,100%{{opacity:0}}"
+        css.append(f"@keyframes s{i}{{{kf}}}")
+        add(f'<g class="a" style="animation-name:s{i};animation-timing-function:step-end" opacity="{1 if i == 0 else 0}">'
+            f'<path fill="url(#pool)" d="{surface_path(t, True)}"/>'
+            f'<path fill="none" stroke="{T["accent"]}" stroke-width="1.6" stroke-opacity="0.75" d="{surface_path(t, False)}"/></g>')
 
     # ripples spreading from the centre on each hit
-    for b in BOOMS:
+    for bi, b in enumerate(BOOMS):
         for k in range(3):
-            start = (b + k * 0.14) / DUR
-            end = min(0.999, start + 1.0 / DUR)
-            ks = [0, start, end, 1] if start > 0 else [0, end, 1]
-            def seq(a, z, idle):
-                return [idle, a, z, idle] if start > 0 else [a, z, idle]
-            add(f'<ellipse cx="{W / 2}" cy="{Y0 + 8}" fill="none" stroke="{T["blood"]}" stroke-width="1.4">'
-                f'{anim("rx", seq("8", str(W * 0.5), "8"), ks)}'
-                f'{anim("ry", seq("1", "22", "1"), ks)}'
-                f'{anim("opacity", seq("0.8", "0", "0"), ks)}</ellipse>')
+            t0 = b + k * 0.14
+            t1 = t0 + 1.0
+            name = f"r{bi}{k}"
+            css.append(f"@keyframes {name}{{0%{{transform:scale(0.02);opacity:0}}"
+                       f"{pct(t0)}{{transform:scale(0.02);opacity:0.8}}{pct(t1)}{{transform:scale(1);opacity:0}}"
+                       f"{pct(min(t1 + 0.01, DUR))},100%{{transform:scale(1);opacity:0}}}}")
+            add(f'<ellipse class="a c" style="animation-name:{name};animation-timing-function:linear" opacity="0" '
+                f'cx="{W / 2}" cy="{Y0 + 8}" rx="{W * 0.5}" ry="22" fill="none" stroke="{T["blood"]}" stroke-width="1.4" vector-effect="non-scaling-stroke"/>')
     add('</g>')
 
-    # droplets
+    # droplets + splashes
+    d = 0
     for b in BOOMS:
         for i in range(30):
             x0 = rng.choice(CROWNS) + rng.uniform(-14, 14) if rng.random() < 0.7 else rng.uniform(150, 850)
@@ -132,26 +132,26 @@ def build():
             vx = rng.uniform(-60, 60)
             t0 = b + rng.uniform(0.0, 0.07)
             r = rng.uniform(1.8, 5.2)
-            n = 10
-            times = [t0 + flight * j / n for j in range(n + 1)]
-            pos = [(vx * (tt - t0), -(vy * (tt - t0) - G * (tt - t0) ** 2 / 2)) for tt in times]
-            ks = [0] + [tt / DUR for tt in times] + [1]
-            tr = [f"0,0"] + [f"{px:.1f},{py:.1f}" for px, py in pos] + ["0,0"]
-            op = ["0"] + ["1"] * n + ["0", "0"]
-            add(f'<g transform="translate({x0:.1f},{Y0 - 2})"><g>'
-                f'<animateTransform attributeName="transform" type="translate" dur="{DUR}s" repeatCount="indefinite" '
-                f'values="{fmt(tr)}" keyTimes="{";".join(f"{k:.4f}" for k in ks)}"/>'
-                f'<ellipse rx="{r:.1f}" ry="{r * 1.25:.1f}" fill="url(#drop)">{anim("opacity", op, ks, calc="discrete")}</ellipse>'
-                f'</g></g>')
-            # splash where it lands
-            land_x = x0 + vx * flight
-            ts, te = (t0 + flight) / DUR, min(0.999, (t0 + flight + 0.28) / DUR)
-            add(f'<ellipse cx="{land_x:.1f}" cy="{Y0}" fill="none" stroke="{T["blood"]}" stroke-width="1.2">'
-                f'{anim("rx", ["0", "0", f"{r * 4:.1f}", "0"], [0, ts, te, 1])}'
-                f'{anim("ry", ["0", "0", f"{r * 1.1:.1f}", "0"], [0, ts, te, 1])}'
-                f'{anim("opacity", ["0", "0.9", "0", "0"], [0, ts, te, 1])}</ellipse>')
-    add("</svg>")
-    return "\n".join(out)
+            name = f"d{d}"
+            frames = [f"0%,{pct(max(0, t0 - 0.001))}{{transform:translate(0px,0px);opacity:0}}"]
+            for j in range(11):
+                tt = flight * j / 10
+                x, y = vx * tt, -(vy * tt - G * tt * tt / 2)
+                frames.append(f"{pct(t0 + tt)}{{transform:translate({x:.1f}px,{y:.1f}px);opacity:1}}")
+            frames.append(f"{pct(min(t0 + flight + 0.001, DUR))},100%{{transform:translate({vx * flight:.1f}px,0px);opacity:0}}")
+            css.append(f"@keyframes {name}{{{''.join(frames)}}}")
+            add(f'<g transform="translate({x0:.1f},{Y0 - 2})"><ellipse class="a" style="animation-name:{name};animation-timing-function:linear" '
+                f'opacity="0" rx="{r:.1f}" ry="{r * 1.25:.1f}" fill="url(#drop)"/></g>')
+            # splash ring where it lands
+            ts, te = t0 + flight, min(t0 + flight + 0.28, DUR - 0.001)
+            css.append(f"@keyframes p{d}{{0%,{pct(ts)}{{transform:scale(0.05);opacity:0}}{pct(ts + 0.001)}{{transform:scale(0.05);opacity:0.9}}"
+                       f"{pct(te)}{{transform:scale(1);opacity:0}}100%{{transform:scale(1);opacity:0}}}}")
+            add(f'<ellipse class="a c" style="animation-name:p{d};animation-timing-function:ease-out" opacity="0" '
+                f'cx="{x0 + vx * flight:.1f}" cy="{Y0}" rx="{r * 4:.1f}" ry="{r * 1.1:.1f}" fill="none" stroke="{T["blood"]}" stroke-width="1.2" vector-effect="non-scaling-stroke"/>')
+            d += 1
+
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">\n'
+            f'{defs}\n<style>{"".join(css)}</style>\n' + "\n".join(body) + "\n</svg>")
 
 
 if __name__ == "__main__":
