@@ -129,5 +129,5 @@ const soulReaper = {
 <p align="center"><i>“The code is my zanpakutō, and every commit sharpens the blade.”</i></p>
 
 <p align="center">
-  <img src="assets/blood-pool.svg" width="100%" alt="Blood pool bursting to the bass"/>
+  <img src="https://raw.githubusercontent.com/Injora/Injora/main/assets/blood-pool.svg" width="100%" alt="Blood pool bursting to the bass"/>
 </p>
