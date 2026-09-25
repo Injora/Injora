@@ -21,7 +21,8 @@ from PIL import Image, ImageDraw
 SCALE = 3
 W, H = 346, 78                # logical pixels -> 1038x234 output
 FPS = 20
-FRAMES = 90                   # 4.5 s loop
+CYCLE = 84                    # one slash: 4.2 s
+FRAMES = CYCLE * 2            # slash 1 ignites the grid, slash 2 restores it
 GRID_X, GRID_Y = 76, 25       # top-left of the contribution grid
 CELL, PITCH = 4, 5
 HERO_X, HERO_Y = 18, 24       # top-left of Ichigo's body sprite
@@ -40,6 +41,7 @@ C = {
 }
 DIM = [(22, 27, 34), (23, 37, 84), (30, 58, 138), (29, 78, 216), (59, 130, 246)]
 LIT = [(255, 255, 255), (255, 217, 168), (255, 160, 77), C["orange"]]
+RESTORE = [(255, 255, 255), (190, 210, 255), (110, 140, 220)]  # then the real level colour
 
 # Ichigo (no arms/sword): 24 x 41, facing right.
 BODY = """
@@ -298,7 +300,7 @@ def draw_getsuga(arr, cx, cy, ry, f, streaks):
 
 # ── Red reiatsu aura ─────────────────────────────────────────────────────────
 def draw_aura(arr, mask, f, charging, rng):
-    pulse = (math.sin(f / FPS * 2 * math.pi * 1.6) + 1) / 2        # ~1.6 pulses per second
+    pulse = (math.sin(2 * math.pi * 12 * f / FRAMES) + 1) / 2     # 12 pulses per loop (~1.4/s), seamless
     r = 2 + round(pulse * 2) + (2 if charging else 0)
     inner = dilate(mask, 1)
     mid = dilate(mask, max(2, r - 1))
@@ -325,7 +327,7 @@ def lerp(a, b, t):
 def render(weeks):
     rng = random.Random(7)
     cells = [(GRID_X + wi * PITCH, GRID_Y + wd * PITCH, lvl) for wi, w in enumerate(weeks) for wd, lvl in w]
-    lit = {}
+    hit = {}
     particles = []
     streaks = [(rng.uniform(-0.7, 0.7), rng.randint(6, 26),
                 rng.choice([C["blue"], C["blueHi"], C["orange"], C["orangeLo"], C["core"]])) for _ in range(12)]
@@ -334,77 +336,79 @@ def render(weeks):
     frames = []
 
     for f in range(FRAMES):
+        cycle, t = divmod(f, CYCLE)
+        if t == 0:
+            hit.clear()
         img = Image.new("RGB", (W, H), C["bg"])
         d = ImageDraw.Draw(img)
-        impact = f == 33
+        impact = t == 33
         if impact:
             img.paste(C["white"], (0, 0, W, H))
         # ground shadow under Ichigo
         d.line([(HERO_X - 2, HERO_Y + 39), (HERO_X + 26, HERO_Y + 39)], fill=C["ground"])
 
         # pose timeline
-        if f < 16 or f >= 82:
+        if t < 16 or t >= 78:
             pose = "idle"
-        elif f < 30:
+        elif t < 30:
             pose = "charge"
-        elif f < 32:
+        elif t < 32:
             pose = "windup"
-        elif f < 36:
+        elif t < 36:
             pose = "swing"
-        elif f < 41:
+        elif t < 41:
             pose = "follow"
         else:
             pose = "finish"
-        bob = -1 if pose == "idle" and (f // 5) % 2 else 0
-        glow = (f - 16) / 13 if pose == "charge" else 0
+        bob = -1 if pose == "idle" and (t // 5) % 2 else 0
+        glow = (t - 16) / 13 if pose == "charge" else 0
         hero, tip = draw_hero(pose, bob=bob, flutter=(f // 3) % 2, glow=glow,
                               silhouette=C["K"] if impact else None, rng=rng)
 
-        if f == WAVE_START:
+        if t == WAVE_START:
             tip0 = tip
         # wave position
         front = -1
         arr = np.array(img)
-        if WAVE_START <= f < WAVE_END + 4:
-            t = (f - WAVE_START) / (WAVE_END - WAVE_START)
+        if WAVE_START <= t < WAVE_END + 4:
+            prog = (t - WAVE_START) / (WAVE_END - WAVE_START)
             x0, x1 = tip0[0] - 4, W + 40
-            cx = x0 + (x1 - x0) * (t ** 1.15)
-            ry = min(27, 9 + (f - WAVE_START) * 5)
-            cy = grid_cy + (tip0[1] - grid_cy) * max(0, 1 - (f - WAVE_START) / 4)
+            cx = x0 + (x1 - x0) * (prog ** 1.15)
+            ry = min(27, 9 + (t - WAVE_START) * 5)
+            cy = grid_cy + (tip0[1] - grid_cy) * max(0, 1 - (t - WAVE_START) / 4)
         # cells
         for (x, y, lvl) in cells:
             key = (x, y)
-            if WAVE_START <= f < WAVE_END + 4:
+            if WAVE_START <= t < WAVE_END + 4:
                 front_est = cx + max(5, ry * 0.58)
-                if key not in lit and front_est >= x + CELL / 2:
-                    lit[key] = f
+                if key not in hit and front_est >= x + CELL / 2:
+                    hit[key] = t
             if impact:
                 col = C["K"]
-            elif key in lit and f < 76:
-                col = LIT[min(f - lit[key], 3)]
-            elif key in lit:
-                col = lerp(C["orange"], DIM[lvl], min(1, (f - 76) / 12))
+            elif cycle == 0:      # slash 1: real data -> orange
+                col = LIT[min(t - hit[key], 3)] if key in hit else DIM[lvl]
+            elif key in hit:      # slash 2: orange -> real data
+                age = t - hit[key]
+                col = RESTORE[age] if age < len(RESTORE) else DIM[lvl]
             else:
-                col = DIM[lvl]
+                col = C["orange"]
             arr[y:y + CELL, x:x + CELL] = col
-        if f >= 88:
-            lit.clear()
 
         # charge particles converge on the blade tip
-        if 16 <= f < 32:
+        if 16 <= t < 32:
             for _ in range(4):
                 a = rng.uniform(0, 2 * math.pi); r = rng.uniform(14, 24)
                 particles.append([tip[0] + math.cos(a) * r, tip[1] + math.sin(a) * r,
                                   -math.cos(a) * r / 5, -math.sin(a) * r / 5, 5,
                                   rng.choice([C["blueHi"], C["orange"], C["white"]])])
         # reiatsu aura rising around Ichigo while charging
-        if 14 <= f < 32:
-            for _ in range(2 + (f - 14) // 4):
+        if 14 <= t < 32:
+            for _ in range(2 + (t - 14) // 4):
                 particles.append([HERO_X + rng.uniform(-2, 26), HERO_Y + rng.uniform(10, 40),
                                   rng.uniform(-0.2, 0.2), -rng.uniform(0.8, 1.8), rng.randint(4, 9),
                                   rng.choice([C["blueHi"], C["blue"], C["orange"]])])
         # swing smear arc
-        if f == 32:
+        if t == 32:
             sx, sy = HERO_X + SHOULDER[0], HERO_Y + SHOULDER[1]
             for ang in range(-110, 12, 2):
                 for rr in (38, 39, 40):
@@ -420,18 +424,18 @@ def render(weeks):
                         arr[py, px] = C["orange"]
 
         # wave + trailing particles
-        if WAVE_START <= f < WAVE_END + 4:
+        if WAVE_START <= t < WAVE_END + 4:
             front = draw_getsuga(arr, cx, cy, ry, f, streaks)
             for _ in range(7):
                 particles.append([front - rng.uniform(4, 20), cy + rng.uniform(-ry, ry),
                                   -rng.uniform(0.5, 2.5), rng.uniform(-0.6, 0.6), rng.randint(6, 14),
                                   rng.choice([C["orange"], C["orangeHi"], C["blueHi"], C["white"]])])
         # embers drift up from the lit grid
-        if WAVE_END <= f < 78 and f % 2 == 0:
+        if WAVE_END <= t < 74 and t % 2 == 0:
             for _ in range(3):
                 particles.append([rng.uniform(GRID_X, GRID_X + len(weeks) * PITCH), GRID_Y + rng.uniform(0, 34),
                                   rng.uniform(-0.2, 0.2), -rng.uniform(0.3, 0.8), rng.randint(8, 14),
-                                  rng.choice([C["orange"], C["orangeHi"]])])
+                                  rng.choice([C["orange"], C["orangeHi"]] if cycle == 0 else [C["blueHi"], C["blue"]])])
         alive = []
         for p in particles:
             x, y = int(p[0]), int(p[1])
@@ -443,10 +447,10 @@ def render(weeks):
         particles = alive
 
         if not impact:
-            draw_aura(arr, np.array(hero)[:, :, 3] > 0, f, charging=16 <= f < 30, rng=rng)
+            draw_aura(arr, np.array(hero)[:, :, 3] > 0, f, charging=16 <= t < 30, rng=rng)
         img = Image.fromarray(arr)
         img.paste(hero, (0, 0), hero)
-        if 34 <= f < 72:
+        if 34 <= t < 70:
             draw_text(img, "GETSUGA TENSHŌ!", GRID_X, GRID_Y - 10, C["orange"] if f % 4 else C["orangeHi"])
         frames.append(img.resize((W * SCALE, H * SCALE), Image.NEAREST))
     return frames
