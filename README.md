@@ -1,20 +1,20 @@
 <!-- ══════════════════════════ HEADER ══════════════════════════ -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:0a0a0a,55:1e3a8a,100:ff6a00&text=INJORA&fontSize=80&fontColor=f5f5f5&fontAlign=50&fontAlignY=38&animation=fadeIn&desc=%E2%9A%94%20Full-Stack%20Shinigami%20%E2%9A%94&descSize=18&descAlignY=60&descAlign=50&stroke=ff6a00&strokeWidth=1" width="100%" alt="Injora header"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:08080B,35:5E0B18,70:B5122A,100:25152D&text=INJORA&fontSize=80&fontColor=F2F2F4&fontAlign=50&fontAlignY=38&animation=fadeIn&desc=%E2%9A%94%20Full-Stack%20Shinigami%20%E2%9A%94&descSize=18&descAlignY=60&descAlign=50&stroke=E21D35&strokeWidth=1" width="100%" alt="Injora header"/>
 </p>
 
 <p align="center">
   <a href="https://injoradev.in">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=3200&pause=900&color=FF6A00&center=true&vCenter=true&width=620&lines=Captain+of+the+Full-Stack+Division;Releasing+Bankai+on+bugs%2C+one+commit+at+a+time;Reiatsu+level%3A+over+9000+commits;Training+arc%3A+Java+%2B+Spring+Boot" alt="Typing SVG"/>
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=3200&pause=900&color=E21D35&center=true&vCenter=true&width=620&lines=Captain+of+the+Full-Stack+Division;Releasing+Bankai+on+bugs%2C+one+commit+at+a+time;Reiatsu+level%3A+over+9000+commits;Training+arc%3A+Java+%2B+Spring+Boot" alt="Typing SVG"/>
   </a>
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/injora-injora-4b1554346/"><img src="https://img.shields.io/badge/LinkedIn-1e3a8a?style=for-the-badge&logo=linkedin&logoColor=f5f5f5" alt="LinkedIn"/></a>
-  <a href="https://injoradev.in"><img src="https://img.shields.io/badge/Portfolio-ff6a00?style=for-the-badge&logo=googlechrome&logoColor=0a0a0a" alt="Portfolio"/></a>
-  <a href="mailto:injoraman@gmail.com"><img src="https://img.shields.io/badge/Email-0a0a0a?style=for-the-badge&logo=gmail&logoColor=ff6a00" alt="Email"/></a>
-  <a href="https://github.com/Injora"><img src="https://img.shields.io/github/followers/Injora?style=for-the-badge&logo=github&logoColor=f5f5f5&label=Followers&labelColor=0a0a0a&color=1e3a8a" alt="Followers"/></a>
-  <img src="https://komarev.com/ghpvc/?username=Injora&label=Souls%20Sensed&color=ff6a00&style=for-the-badge" alt="Profile views"/>
+  <a href="https://www.linkedin.com/in/injora-injora-4b1554346/"><img src="https://img.shields.io/badge/LinkedIn-B5122A?style=for-the-badge&logo=linkedin&logoColor=F2F2F4" alt="LinkedIn"/></a>
+  <a href="https://injoradev.in"><img src="https://img.shields.io/badge/Portfolio-6E0B19?style=for-the-badge&logo=googlechrome&logoColor=F2F2F4" alt="Portfolio"/></a>
+  <a href="mailto:injoraman@gmail.com"><img src="https://img.shields.io/badge/Email-151118?style=for-the-badge&logo=gmail&logoColor=E21D35" alt="Email"/></a>
+  <a href="https://github.com/Injora"><img src="https://img.shields.io/github/followers/Injora?style=for-the-badge&logo=github&logoColor=F2F2F4&label=Followers&labelColor=151118&color=B5122A" alt="Followers"/></a>
+  <img src="https://komarev.com/ghpvc/?username=Injora&label=Souls%20Sensed&color=b5122a&style=for-the-badge" alt="Profile views"/>
 </p>
 
 <!-- ══════════════════════════ ABOUT ══════════════════════════ -->
@@ -106,12 +106,12 @@ const soulReaper = {
 <h2 align="center">📊 Reiatsu Readings</h2>
 
 <p align="center">
-  <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&include_all_commits=true&custom_title=Reiatsu%20Stats&bg_color=0a0a0a&title_color=ff6a00&text_color=f5f5f5&icon_color=ff6a00&border_color=1e3a8a&ring_color=ff6a00" alt="GitHub stats"/>
-  <img height="180" src="https://github-stats-extended.vercel.app/api/top-langs/?username=Injora&layout=compact&langs_count=8&custom_title=Zanpakut%C5%8D%20Affinity&bg_color=0a0a0a&title_color=ff6a00&text_color=f5f5f5&icon_color=ff6a00&border_color=1e3a8a" alt="Top languages"/>
+  <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&include_all_commits=true&custom_title=Reiatsu%20Stats&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E&ring_color=B5122A" alt="GitHub stats"/>
+  <img height="180" src="https://github-stats-extended.vercel.app/api/top-langs/?username=Injora&layout=compact&langs_count=8&custom_title=Zanpakut%C5%8D%20Affinity&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E" alt="Top languages"/>
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Injora&background=0a0a0a&border=1e3a8a&stroke=1e3a8a&ring=ff6a00&fire=ff6a00&currStreakNum=f5f5f5&sideNums=f5f5f5&currStreakLabel=ff6a00&sideLabels=ff6a00&dates=9ca3af" alt="GitHub streak"/>
+  <img src="https://streak-stats.demolab.com?user=Injora&background=0B0B0F&border=38252E&stroke=38252E&ring=B5122A&fire=E21D35&currStreakNum=F2F2F4&sideNums=F2F2F4&currStreakLabel=E21D35&sideLabels=B8B6BE&dates=77747E" alt="GitHub streak"/>
 </p>
 
 <p align="center">
@@ -129,5 +129,5 @@ const soulReaper = {
 <p align="center"><i>“The code is my zanpakutō, and every commit sharpens the blade.”</i></p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:ff6a00,45:1e3a8a,100:0a0a0a&animation=fadeIn" width="100%" alt="Footer"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:050507,35:17101D,70:55101D,100:08080B&animation=fadeIn" width="100%" alt="Footer"/>
 </p>

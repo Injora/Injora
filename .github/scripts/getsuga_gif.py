@@ -13,6 +13,7 @@ import os
 import random
 import sys
 import urllib.request
+from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw
@@ -28,20 +29,28 @@ CELL, PITCH = 4, 5
 HERO_X, HERO_Y = 18, 24       # top-left of Ichigo's body sprite
 
 # ── Palette ──────────────────────────────────────────────────────────────────
+THEME = json.loads((Path(__file__).resolve().parent.parent / "theme.json").read_text())
+
+
+def rgb(key):
+    h = THEME[key].lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
 C = {
-    "bg": (10, 10, 10), "rim": (36, 46, 86), "ground": (26, 26, 32),
+    "bg": rgb("bg"), "rim": rgb("violet"), "ground": (20, 20, 28),
     "K": (8, 8, 14), "H": (255, 122, 26), "h": (196, 74, 0), "L": (255, 184, 92),
     "S": (242, 198, 160), "s": (201, 143, 106), "E": (20, 20, 30), "W": (232, 232, 240),
     "w": (170, 170, 190), "B": (32, 32, 48), "b": (66, 66, 98), "R": (138, 42, 42),
     "N": (96, 60, 36),
     "blade": (184, 194, 207), "bladeDark": (74, 82, 96), "bladeEdge": (255, 255, 255),
-    "red": (230, 36, 28), "redHi": (255, 96, 70), "redLo": (120, 8, 10),
-    "orange": (255, 106, 0), "orangeHi": (255, 176, 102), "orangeLo": (180, 70, 0),
-    "blue": (30, 58, 138), "blueHi": (59, 99, 208), "core": (5, 5, 10), "white": (245, 245, 245),
+    "red": rgb("crimson"), "redHi": rgb("accent"), "redLo": rgb("deepRed"),
+    "energy": rgb("blood"), "energyHi": rgb("accent"), "energyLo": rgb("borderHi"),
+    "violet": rgb("violetCold"), "violetHi": rgb("violetPale"), "core": rgb("bgDeep"), "white": rgb("text"),
 }
-DIM = [(22, 27, 34), (23, 37, 84), (30, 58, 138), (29, 78, 216), (59, 130, 246)]
-LIT = [(255, 255, 255), (255, 217, 168), (255, 160, 77), C["orange"]]
-RESTORE = [(255, 255, 255), (190, 210, 255), (110, 140, 220)]  # then the real level colour
+DIM = [tuple(int(h[i:i + 2], 16) for i in (1, 3, 5)) for h in THEME["cellLevels"]]
+LIT = [(255, 255, 255), (255, 196, 204), (255, 110, 128), C["energy"]]
+RESTORE = [(255, 255, 255), (214, 198, 232), (150, 120, 182)]  # then the real level colour
 
 # Ichigo (no arms/sword): 24 x 41, facing right.
 BODY = """
@@ -180,9 +189,9 @@ def draw_hero(pose, bob=0, flutter=0, glow=0.0, silhouette=None, rng=None):
     if glow > 0:
         g = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         gd = ImageDraw.Draw(g)
-        gd.polygon(blade, fill=(*C["blue"], 255))
+        gd.polygon(blade, fill=(*C["violet"], 255))
         for _ in range(int(1 + glow * 2)):
-            g = outline(g, C["blueHi"] if rng.random() < 0.5 else C["orange"])
+            g = outline(g, C["violetHi"] if rng.random() < 0.5 else C["energy"])
         layer = Image.alpha_composite(g, layer)
         d = ImageDraw.Draw(layer)
 
@@ -288,13 +297,13 @@ def draw_getsuga(arr, cx, cy, ry, f, streaks):
                 arr[y, x] = col
     checker = (XX + YY + f) % 2 == 0
     glow = dilate(outer, 2) & ~outer & (XX > cx - 1) & checker
-    paint(arr, glow, C["orangeLo"])
+    paint(arr, glow, C["energyLo"])
     paint(arr, cres, C["core"])
-    paint(arr, cres & dilate(inner, 2), C["blue"])
-    paint(arr, cres & dilate(inner, 1) & checker, C["blueHi"])
-    paint(arr, cres & ~erode(outer, 2), C["orange"])
+    paint(arr, cres & dilate(inner, 2), C["violet"])
+    paint(arr, cres & dilate(inner, 1) & checker, C["violetHi"])
+    paint(arr, cres & ~erode(outer, 2), C["energy"])
     lead = cres & ~erode(outer, 1) & (XX > cx + rx * 0.5)
-    paint(arr, lead, C["white"] if f % 2 else C["orangeHi"])
+    paint(arr, lead, C["white"] if f % 2 else C["energyHi"])
     return cx + rx  # leading edge
 
 
@@ -330,7 +339,7 @@ def render(weeks):
     hit = {}
     particles = []
     streaks = [(rng.uniform(-0.7, 0.7), rng.randint(6, 26),
-                rng.choice([C["blue"], C["blueHi"], C["orange"], C["orangeLo"], C["core"]])) for _ in range(12)]
+                rng.choice([C["violet"], C["violetHi"], C["energy"], C["energyLo"], C["core"]])) for _ in range(12)]
     grid_cy = GRID_Y + 7 * PITCH // 2
     WAVE_START, WAVE_END = 34, 64
     frames = []
@@ -391,7 +400,7 @@ def render(weeks):
                 age = t - hit[key]
                 col = RESTORE[age] if age < len(RESTORE) else DIM[lvl]
             else:
-                col = C["orange"]
+                col = C["energy"]
             arr[y:y + CELL, x:x + CELL] = col
 
         # charge particles converge on the blade tip
@@ -400,13 +409,13 @@ def render(weeks):
                 a = rng.uniform(0, 2 * math.pi); r = rng.uniform(14, 24)
                 particles.append([tip[0] + math.cos(a) * r, tip[1] + math.sin(a) * r,
                                   -math.cos(a) * r / 5, -math.sin(a) * r / 5, 5,
-                                  rng.choice([C["blueHi"], C["orange"], C["white"]])])
+                                  rng.choice([C["violetHi"], C["energy"], C["white"]])])
         # reiatsu aura rising around Ichigo while charging
         if 14 <= t < 32:
             for _ in range(2 + (t - 14) // 4):
                 particles.append([HERO_X + rng.uniform(-2, 26), HERO_Y + rng.uniform(10, 40),
                                   rng.uniform(-0.2, 0.2), -rng.uniform(0.8, 1.8), rng.randint(4, 9),
-                                  rng.choice([C["blueHi"], C["blue"], C["orange"]])])
+                                  rng.choice([C["violetHi"], C["violet"], C["energy"]])])
         # swing smear arc
         if t == 32:
             sx, sy = HERO_X + SHOULDER[0], HERO_Y + SHOULDER[1]
@@ -414,14 +423,14 @@ def render(weeks):
                 for rr in (38, 39, 40):
                     px, py = sx + math.cos(math.radians(ang)) * rr, sy + math.sin(math.radians(ang)) * rr
                     if 0 <= px < W and 0 <= py < H:
-                        arr[int(py), int(px)] = C["white"] if rr == 39 else C["orangeHi"]
+                        arr[int(py), int(px)] = C["white"] if rr == 39 else C["energyHi"]
         if impact:
             for _ in range(18):
                 a = rng.uniform(-math.pi, math.pi); r0, r1 = rng.uniform(6, 14), rng.uniform(40, 160)
                 for k in range(int(r0), int(r1), 1):
                     px, py = int(tip[0] + math.cos(a) * k), int(tip[1] + math.sin(a) * k)
                     if 0 <= px < W and 0 <= py < H:
-                        arr[py, px] = C["orange"]
+                        arr[py, px] = C["energy"]
 
         # wave + trailing particles
         if WAVE_START <= t < WAVE_END + 4:
@@ -429,13 +438,13 @@ def render(weeks):
             for _ in range(7):
                 particles.append([front - rng.uniform(4, 20), cy + rng.uniform(-ry, ry),
                                   -rng.uniform(0.5, 2.5), rng.uniform(-0.6, 0.6), rng.randint(6, 14),
-                                  rng.choice([C["orange"], C["orangeHi"], C["blueHi"], C["white"]])])
+                                  rng.choice([C["energy"], C["energyHi"], C["violetHi"], C["white"]])])
         # embers drift up from the lit grid
         if WAVE_END <= t < 74 and t % 2 == 0:
             for _ in range(3):
                 particles.append([rng.uniform(GRID_X, GRID_X + len(weeks) * PITCH), GRID_Y + rng.uniform(0, 34),
                                   rng.uniform(-0.2, 0.2), -rng.uniform(0.3, 0.8), rng.randint(8, 14),
-                                  rng.choice([C["orange"], C["orangeHi"]] if cycle == 0 else [C["blueHi"], C["blue"]])])
+                                  rng.choice([C["energy"], C["energyHi"]] if cycle == 0 else [C["violetHi"], C["violet"]])])
         alive = []
         for p in particles:
             x, y = int(p[0]), int(p[1])
@@ -451,7 +460,7 @@ def render(weeks):
         img = Image.fromarray(arr)
         img.paste(hero, (0, 0), hero)
         if 34 <= t < 70:
-            draw_text(img, "GETSUGA TENSHŌ!", GRID_X, GRID_Y - 10, C["orange"] if f % 4 else C["orangeHi"])
+            draw_text(img, "GETSUGA TENSHŌ!", GRID_X, GRID_Y - 10, C["energy"] if f % 4 else C["energyHi"])
         frames.append(img.resize((W * SCALE, H * SCALE), Image.NEAREST))
     return frames
 

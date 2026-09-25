@@ -1,0 +1,23 @@
+{
+  "_comment": "TYBW palette shared by the generated images. README image URLs use the same hex values.",
+  "bgDeep": "#050507",
+  "bg": "#08080B",
+  "panel": "#0B0B0F",
+  "card": "#101016",
+  "border": "#38252E",
+  "borderHi": "#8F1628",
+  "grid": "#251D25",
+  "crimson": "#B5122A",
+  "blood": "#E21D35",
+  "deepRed": "#6E0B19",
+  "accent": "#FF3048",
+  "violetDark": "#25152D",
+  "violet": "#351A3D",
+  "violetCold": "#59406F",
+  "violetPale": "#8C6BA8",
+  "steel": "#9A9AA3",
+  "text": "#F2F2F4",
+  "text2": "#B8B6BE",
+  "muted": "#77747E",
+  "cellLevels": ["#18161F", "#3A1F45", "#5B3470", "#8A5AAE", "#BE95E6"]
+}

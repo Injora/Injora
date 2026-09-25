@@ -1,13 +1,14 @@
 // Renders a 31-day contribution activity graph as a themed SVG.
 // Usage: GITHUB_TOKEN=... node activity-graph.mjs <username> <out.svg>
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname } from "node:path";
 
 const [user = "Injora", out = "dist/activity-graph.svg"] = process.argv.slice(2);
 const token = process.env.GITHUB_TOKEN;
 if (!token) throw new Error("GITHUB_TOKEN is required");
 
-const C = { bg: "#0a0a0a", text: "#f5f5f5", orange: "#ff6a00", blue: "#1e3a8a", muted: "#9ca3af", grid: "#1f2937" };
+const THEME = JSON.parse(readFileSync(new URL("../theme.json", import.meta.url)));
+const C = { bg: THEME.bg, text: THEME.text, line: THEME.blood, point: THEME.accent, glow: THEME.deepRed, violet: THEME.violetDark, muted: THEME.muted, grid: THEME.grid, border: THEME.border };
 const DAYS = 31;
 
 const to = new Date();
@@ -54,12 +55,12 @@ const labels = days.map((d, i) => i % 5 === 0 || i === days.length - 1
   : "").join("");
 
 const dots = pts.map(([px, py], i) =>
-  `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3.5" fill="${C.bg}" stroke="${C.orange}" stroke-width="2">` +
+  `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3.5" fill="${C.bg}" stroke="${C.point}" stroke-width="2">` +
   `<title>${days[i].date}: ${days[i].contributionCount}</title></circle>`).join("");
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
 <style>
-  .title{font:700 20px 'Segoe UI',Ubuntu,sans-serif;fill:${C.orange}}
+  .title{font:700 20px 'Segoe UI',Ubuntu,sans-serif;fill:${C.line}}
   .sub{font:500 13px 'Segoe UI',Ubuntu,sans-serif;fill:${C.muted}}
   .axis{font:500 11px 'Segoe UI',Ubuntu,sans-serif;fill:${C.muted}}
   .draw{stroke-dasharray:4000;stroke-dashoffset:4000;animation:draw 2.4s ease-out forwards}
@@ -67,14 +68,15 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
 </style>
 <defs>
   <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="${C.orange}" stop-opacity="0.45"/>
-    <stop offset="1" stop-color="${C.blue}" stop-opacity="0.05"/>
+    <stop offset="0" stop-color="${C.line}" stop-opacity="0.35"/>
+    <stop offset="0.6" stop-color="${C.glow}" stop-opacity="0.18"/>
+    <stop offset="1" stop-color="${C.violet}" stop-opacity="0.05"/>
   </linearGradient>
   <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="${C.blue}"/><stop offset="1" stop-color="${C.orange}"/>
+    <stop offset="0" stop-color="${C.glow}"/><stop offset="1" stop-color="${C.line}"/>
   </linearGradient>
 </defs>
-<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="${C.bg}" stroke="${C.blue}"/>
+<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="${C.bg}" stroke="${C.border}"/>
 <text x="${L - 30}" y="36" class="title">${user}'s Reiatsu Flow</text>
 <text x="${W - R}" y="36" text-anchor="end" class="sub">${total} contributions · last ${DAYS} days</text>
 ${grid}${labels}
