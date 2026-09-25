@@ -121,11 +121,17 @@ const soulReaper = {
 <!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
 <h2 align="center">🌙 Getsuga Tenshō</h2>
 
+<!-- PLACEHOLDER: swap assets/getsuga/ichigo-getsuga.gif for the commissioned
+     Ichigo animation (960×300, ~4s seamless loop, 24 fps). No README edit needed. -->
+<p align="center">
+  <img src="assets/getsuga/ichigo-getsuga.gif" width="100%" alt="Ichigo firing Getsuga Tenshō (commissioned animation, placeholder for now)"/>
+</p>
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho-dark.svg"/>
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
-    <img alt="Getsuga Tensho slashing through the contribution graph" src="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
+    <img width="100%" alt="Getsuga Tensho slashing through the contribution graph" src="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
   </picture>
 </p>
 

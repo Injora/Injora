@@ -1,5 +1,6 @@
 // Renders the contribution grid "Getsuga Tenshō" animation: the grid starts fully
-// charged, a swordsman swings, and a crescent slash reveals the real contributions.
+// charged, then a crescent slash sweeps across and reveals the real contributions.
+// The character animation lives separately in assets/getsuga/ichigo-getsuga.gif.
 // Usage: GITHUB_TOKEN=... node getsuga.mjs <username> <outDir>
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
@@ -26,18 +27,18 @@ const LEVEL = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 
 const THEMES = {
   light: {
     levels: ["#ebedf0", "#fed7aa", "#fdba74", "#fb923c", "#ff6a00"],
-    full: "#ff6a00", ink: "#0a0a0a", outline: "none", text: "#0a0a0a",
+    full: "#ff6a00", text: "#0a0a0a",
   },
   dark: {
     levels: ["#161b22", "#1e3a8a", "#7c2d12", "#c2410c", "#ff6a00"],
-    full: "#ff6a00", ink: "#0a0a0a", outline: "#f5f5f5", text: "#f5f5f5",
+    full: "#ff6a00", text: "#f5f5f5",
   },
 };
 
 // Layout
-const CELL = 12, PITCH = 15, GX = 150, GY = 46;
+const CELL = 12, PITCH = 15, GX = 24, GY = 34;
 const cols = weeks.length;
-const W = GX + cols * PITCH + 24;
+const W = GX + cols * PITCH + GX;
 const H = GY + 7 * PITCH + 22;
 const MIDY = GY + (7 * PITCH) / 2;
 
@@ -70,8 +71,6 @@ function render(t) {
     );
   });
 
-  const stroke = t.outline === "none" ? "" : ` stroke="${t.outline}" stroke-width="1"`;
-
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
 <defs>
   <linearGradient id="core" x1="0" y1="0" x2="1" y2="0">
@@ -84,10 +83,6 @@ function render(t) {
 </defs>
 <style>
   ${keyframes.join("\n  ")}
-  .swing{animation:swing ${DUR}s ease-in-out infinite}
-  @keyframes swing{0%,12%{transform:rotate(-35deg)}17%{transform:rotate(-65deg)}20.5%{transform:rotate(100deg)}40%{transform:rotate(100deg)}55%,100%{transform:rotate(-35deg)}}
-  .aura{animation:aura ${DUR}s ease-in-out infinite}
-  @keyframes aura{0%,2%{opacity:0}8%{opacity:.5}12%{opacity:.25}16%{opacity:.9}21%,100%{opacity:0}}
   .slash{animation:slash ${DUR}s linear infinite}
   @keyframes slash{0%,${SLASH_START - 0.5}%{transform:translateX(${X0}px);opacity:0}${SLASH_START}%{transform:translateX(${X0}px);opacity:1}${SLASH_END}%{transform:translateX(${X1}px);opacity:1}${SLASH_END + 3}%,100%{transform:translateX(${X1 + 30}px);opacity:0}}
   .name{font:italic 900 15px 'Segoe UI',Ubuntu,sans-serif;fill:#ff6a00;letter-spacing:3px;animation:name ${DUR}s ease-out infinite}
@@ -112,28 +107,6 @@ function render(t) {
   </g>
 </g>
 
-<!-- Swordsman (original silhouette) -->
-<g transform="translate(18 ${H - 128})">
-  <ellipse cx="58" cy="120" rx="40" ry="4" fill="${t.ink}" opacity="0.25"/>
-  <!-- hakama + legs -->
-  <path d="M44,74 L34,118 L50,118 L56,92 L62,118 L80,118 L70,74 Z" fill="${t.ink}"${stroke}/>
-  <!-- torso -->
-  <path d="M44,40 L70,40 L73,78 L41,78 Z" fill="${t.ink}"${stroke}/>
-  <path d="M41,70 L73,70" stroke="#f5f5f5" stroke-width="2"/>
-  <!-- head + hair -->
-  <circle cx="57" cy="28" r="9" fill="${t.ink}"${stroke}/>
-  <path d="M46,26 L42,14 L50,18 L50,8 L56,16 L60,5 L62,15 L70,9 L68,19 L75,18 L68,26 Q57,17 46,26 Z" fill="#ff6a00"/>
-  <!-- arm + blade -->
-  <g transform="translate(66 46)">
-    <g class="swing">
-      <ellipse class="aura" cx="18" cy="-40" rx="14" ry="44" fill="#ff4500" filter="url(#glow)"/>
-      <path d="M0,0 L18,0" stroke="${t.ink}" stroke-width="6" stroke-linecap="round"/>
-      <rect x="15" y="-6" width="6" height="14" fill="#7c2d12"/>
-      <rect x="11" y="-9" width="14" height="3" fill="#9ca3af"/>
-      <path d="M13,-9 L23,-9 L22,-78 L18,-86 L14,-78 Z" fill="#0a0a0a" stroke="#f5f5f5" stroke-width="1"/>
-    </g>
-  </g>
-</g>
 </svg>
 `;
 }
