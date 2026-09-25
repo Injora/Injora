@@ -121,10 +121,9 @@ const soulReaper = {
 <!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
 <h2 align="center">🌙 Getsuga Tenshō</h2>
 
-<!-- PLACEHOLDER: swap assets/getsuga/ichigo-getsuga.gif for the commissioned
-     Ichigo animation (960×300, ~4s seamless loop, 24 fps). No README edit needed. -->
+<!-- Ichigo Getsuga Tenshō clip: Bleach: Hell Verse, via Tenor (trimmed, mirrored, cropped). -->
 <p align="center">
-  <img src="assets/getsuga/ichigo-getsuga.gif" width="100%" alt="Ichigo firing Getsuga Tenshō (commissioned animation, placeholder for now)"/>
+  <img src="assets/getsuga/ichigo-getsuga.gif" width="100%" alt="Ichigo Kurosaki firing Getsuga Tenshō with Zangetsu"/>
 </p>
 
 <p align="center">

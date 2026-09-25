@@ -1,14 +1,19 @@
 # Getsuga Tenshō banner
 
 `ichigo-getsuga.gif` is shown at the top of the "🌙 Getsuga Tenshō" section of the
-profile README. It is currently a **placeholder**; replace it with the commissioned
-animation using the same filename.
+profile README.
 
-Target spec for the final file:
+Source: a clip from *Bleach: Hell Verse* (2010), as hosted on Tenor
+(https://tenor.com/view/ichigo-kurosaki-getsuga-tensho-visored-hell-verse-bleach-gif-23887237).
+Bleach © Tite Kubo / Shueisha / Studio Pierrot. Used here as non-commercial fan
+content; it will be removed on request from the rights holder.
 
-- 960×300 (16:5), Ichigo on the left, Getsuga travelling right
-- 3–5 s seamless loop at 20–24 fps
-- dark background (`#0a0a0a`), under ~5 MB
+Processing (source kept out of git in `assets/source/`):
 
-Keep the original source files (PNG frames / MP4 / WebM) out of git and put the
-animator's credit and written permission alongside the delivery.
+```sh
+VF="trim=start=0:end=3.08,setpts=PTS-STARTPTS,hflip,crop=640:200:0:45,scale=960:300:flags=lanczos,fps=24"
+ffmpeg -i getsuga-source.mp4 -vf "${VF},palettegen=max_colors=128:stats_mode=diff" palette.png
+ffmpeg -i getsuga-source.mp4 -i palette.png \
+  -lavfi "${VF}[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle" -loop 0 raw.gif
+gifsicle -O3 --lossy=40 raw.gif -o ichigo-getsuga.gif
+```
