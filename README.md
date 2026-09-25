@@ -1,6 +1,6 @@
 <!-- ══════════════════════════ HEADER ══════════════════════════ -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:08080B,35:5E0B18,70:B5122A,100:25152D&text=INJORA&fontSize=80&fontColor=F2F2F4&fontAlign=50&fontAlignY=38&animation=fadeIn&desc=%E2%9A%94%20Full-Stack%20Shinigami%20%E2%9A%94&descSize=18&descAlignY=60&descAlign=50&stroke=E21D35&strokeWidth=1" width="100%" alt="Injora header"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:08080B,35:5E0B18,70:B5122A,100:25152D&text=INJORA&fontSize=80&fontColor=F2F2F4&fontAlign=50&fontAlignY=38&animation=fadeIn&desc=Full-Stack%20Shinigami&descSize=18&descAlignY=60&descAlign=50&stroke=E21D35&strokeWidth=1" width="100%" alt="Injora header"/>
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 </p>
 
 <!-- ══════════════════════════ ABOUT ══════════════════════════ -->
-<h2 align="center">⚔️ Shinigami Profile</h2>
+<h2 align="center"><img src="assets/icons/mask.svg" height="26" align="center" alt=""/>&nbsp;Shinigami Profile</h2>
 
 ```js
 const soulReaper = {
@@ -26,16 +26,16 @@ const soulReaper = {
   division:       "Full-Stack Division",
   zanpakuto:      "JavaScript",                        // main language
   shikai:         ["React", "HTML", "CSS"],            // frontend form
-  bankai:         "Full-stack apps: React ⚡ Node/Express ⚡ SQL", // strongest skill
+  bankai:         "Full-stack apps: React + Node/Express + SQL", // strongest skill
   kido:           ["PostgreSQL", "MySQL", "MongoDB", "Django"],
   currentMission: "Mastering Java + Spring Boot",
-  offDuty:        ["anime 📺", "movies 🎬", "comics 📚"],
+  offDuty:        ["anime", "movies", "comics"],
   senkaimon:      "https://injoradev.in",
 };
 ```
 
 <!-- ══════════════════════════ STACK ══════════════════════════ -->
-<h2 align="center">🗡️ Zanpakutō Arsenal</h2>
+<h2 align="center"><img src="assets/icons/blade.svg" height="26" align="center" alt=""/>&nbsp;Zanpakutō Arsenal</h2>
 
 <table align="center">
   <tr>
@@ -61,49 +61,49 @@ const soulReaper = {
 </table>
 
 <!-- ══════════════════════════ PROJECTS ══════════════════════════ -->
-<h2 align="center">🔥 Bankai Releases</h2>
+<h2 align="center"><img src="assets/icons/flame.svg" height="26" align="center" alt=""/>&nbsp;Bankai Releases</h2>
 
 <table align="center">
   <tr>
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/Injora/RecomOS">🧭 OpenSource Compass</a></h3>
+      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/RecomOS">OpenSource Compass</a></h3>
       Helps beginners find GSoC / open-source orgs that actually fit them. Researches real orgs (GitHub activity, contribution docs, good-first-issues), returns an evidence-backed top 5 and a personalized 30-day roadmap. No fabricated claims.
       <br/><br/>
       <code>TypeScript</code> <code>Prisma</code> <code>PostgreSQL</code> <code>GitHub API</code>
       <br/><br/>
-      <a href="https://recomos.onrender.com/">🌐 Live</a> · <a href="https://github.com/Injora/RecomOS">📂 Code</a>
+      <a href="https://recomos.onrender.com/">Live</a> · <a href="https://github.com/Injora/RecomOS">Code</a>
     </td>
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/Injora/shuttle-tracker">🚌 Shuttle Tracker</a></h3>
+      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/shuttle-tracker">Shuttle Tracker</a></h3>
       Live shuttle tracking for a college's off-campus hostel network, with student, driver, and admin roles. PostGIS geofenced pickup requests, quorum-triggered dispatch, and real-time GPS streaming, all enforced server-side.
       <br/><br/>
       <code>React Native</code> <code>Expo</code> <code>Supabase</code> <code>PostGIS</code>
       <br/><br/>
-      <a href="https://github.com/Injora/shuttle-tracker">📂 Code</a>
+      <a href="https://github.com/Injora/shuttle-tracker">Code</a>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/Injora/nst--events">🎟️ NST-Events</a></h3>
+      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/nst--events">NST-Events</a></h3>
       Campus event platform for 3000+ students: discovery, team registration with waitlists, leaderboards, and cryptographically rotating QR attendance (TOTP + geofence). Two-tier RBAC backed by Postgres Row-Level Security.
       <br/><br/>
       <code>TypeScript</code> <code>Express</code> <code>PostgreSQL</code> <code>OAuth</code>
       <br/><br/>
-      <a href="https://github.com/Injora/nst--events">📂 Code</a>
+      <a href="https://github.com/Injora/nst--events">Code</a>
     </td>
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/Injora/Seireitei">⚔️ Bleach Battle Arena</a></h3>
+      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/Seireitei">Bleach Battle Arena</a></h3>
       2-player drafting and battle simulator powered by a live Bleach API. Draft teams of 3, clash on spiritual pressure with race-based multipliers, and trigger one-time Bankai / Resurrección revivals with cinematic animations.
       <br/><br/>
       <code>JavaScript</code> <code>HTML</code> <code>CSS</code> <code>REST API</code>
       <br/><br/>
-      <a href="https://seireitei.injoradev.in/">🌐 Live</a> · <a href="https://github.com/Injora/Seireitei">📂 Code</a>
+      <a href="https://seireitei.injoradev.in/">Live</a> · <a href="https://github.com/Injora/Seireitei">Code</a>
     </td>
   </tr>
 </table>
 
 <!-- ══════════════════════════ STATS ══════════════════════════ -->
-<h2 align="center">📊 Reiatsu Readings</h2>
+<h2 align="center"><img src="assets/icons/pulse.svg" height="26" align="center" alt=""/>&nbsp;Reiatsu Readings</h2>
 
 <p align="center">
   <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&include_all_commits=true&custom_title=Reiatsu%20Stats&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E&ring_color=B5122A" alt="GitHub stats"/>
@@ -119,7 +119,7 @@ const soulReaper = {
 </p>
 
 <!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
-<h2 align="center">🌙 Getsuga Tenshō</h2>
+<h2 align="center"><img src="assets/icons/crescent.svg" height="26" align="center" alt=""/>&nbsp;Getsuga Tenshō</h2>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Injora/Injora/output/ichigo-getsuga.gif" width="100%" alt="Pixel-art Ichigo swings Zangetsu and fires Getsuga Tenshō, igniting the contribution graph orange"/>
@@ -129,5 +129,5 @@ const soulReaper = {
 <p align="center"><i>“The code is my zanpakutō, and every commit sharpens the blade.”</i></p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:050507,35:17101D,70:55101D,100:08080B&animation=fadeIn" width="100%" alt="Footer"/>
+  <img src="assets/blood-pool.svg" width="100%" alt="Blood pool bursting to the bass"/>
 </p>

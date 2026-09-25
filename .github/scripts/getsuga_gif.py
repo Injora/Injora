@@ -38,19 +38,19 @@ def rgb(key):
 
 
 C = {
-    "bg": rgb("bg"), "rim": rgb("violet"), "ground": (20, 20, 28),
+    "bg": rgb("bg"), "rim": (58, 10, 18), "ground": (20, 20, 28),
     "K": (8, 8, 14), "H": (255, 122, 26), "h": (196, 74, 0), "L": (255, 184, 92),
     "S": (242, 198, 160), "s": (201, 143, 106), "E": (20, 20, 30), "W": (232, 232, 240),
     "w": (170, 170, 190), "B": (32, 32, 48), "b": (66, 66, 98), "R": (138, 42, 42),
     "N": (96, 60, 36),
     "blade": (184, 194, 207), "bladeDark": (74, 82, 96), "bladeEdge": (255, 255, 255),
     "red": rgb("crimson"), "redHi": rgb("accent"), "redLo": rgb("deepRed"),
-    "energy": rgb("blood"), "energyHi": rgb("accent"), "energyLo": rgb("borderHi"),
-    "violet": rgb("violetCold"), "violetHi": rgb("violetPale"), "core": rgb("bgDeep"), "white": rgb("text"),
+    "energy": rgb("accent"), "energyHi": (255, 120, 138), "energyLo": rgb("borderHi"),
+    "violet": rgb("deepRed"), "violetHi": (255, 128, 144), "core": rgb("bgDeep"), "white": rgb("text"),
 }
 DIM = [tuple(int(h[i:i + 2], 16) for i in (1, 3, 5)) for h in THEME["cellLevels"]]
 LIT = [(255, 255, 255), (255, 196, 204), (255, 110, 128), C["energy"]]
-RESTORE = [(255, 255, 255), (214, 198, 232), (150, 120, 182)]  # then the real level colour
+RESTORE = [(255, 255, 255), (255, 190, 198), (200, 70, 86)]  # then the real level colour
 
 # Ichigo (no arms/sword): 24 x 41, facing right.
 BODY = """
