@@ -121,17 +121,8 @@ const soulReaper = {
 <!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
 <h2 align="center">🌙 Getsuga Tenshō</h2>
 
-<!-- Ichigo Getsuga Tenshō clip: Bleach: Hell Verse, via Tenor (trimmed, mirrored, cropped). -->
 <p align="center">
-  <img src="assets/getsuga/ichigo-getsuga.gif" width="100%" alt="Ichigo Kurosaki firing Getsuga Tenshō with Zangetsu"/>
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho-dark.svg"/>
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
-    <img width="100%" alt="Getsuga Tensho slashing through the contribution graph" src="https://raw.githubusercontent.com/Injora/Injora/output/getsuga-tensho.svg"/>
-  </picture>
+  <img src="https://raw.githubusercontent.com/Injora/Injora/output/ichigo-getsuga.gif" width="100%" alt="Pixel-art Ichigo swings Zangetsu and fires Getsuga Tenshō, igniting the contribution graph orange"/>
 </p>
 
 <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
