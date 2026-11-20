@@ -25,9 +25,9 @@ const soulReaper = {
   name:           "Injora",
   division:       "Full-Stack Division",
   zanpakuto:      "JavaScript",                        // main language
-  shikai:         ["React", "HTML", "CSS"],            // frontend form
+  shikai:         ["React", "Astro", "HTML", "CSS"],   // frontend form
   bankai:         "Full-stack apps: React + Node/Express + SQL", // strongest skill
-  kido:           ["PostgreSQL", "MySQL", "MongoDB", "Django"],
+  kido:           ["Go", "Django", "PostgreSQL", "MySQL", "MongoDB"],
   currentMission: "Mastering Java + Spring Boot",
   offDuty:        ["anime", "movies", "comics"],
   senkaimon:      "https://injoradev.in",
@@ -106,7 +106,7 @@ const soulReaper = {
 <h2 align="center"><img src="assets/icons/pulse.svg" height="39" align="center" alt=""/>&nbsp;Reiatsu Readings</h2>
 
 <p align="center">
-  <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&include_all_commits=true&custom_title=Reiatsu%20Stats&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E&ring_color=B5122A" alt="GitHub stats"/>
+  <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&custom_title=Reiatsu%20Stats&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E&ring_color=B5122A" alt="GitHub stats"/>
   <img height="180" src="https://github-stats-extended.vercel.app/api/top-langs/?username=Injora&layout=compact&langs_count=8&custom_title=Zanpakut%C5%8D%20Affinity&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E" alt="Top languages"/>
 </p>
 
