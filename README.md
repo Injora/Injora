@@ -1,6 +1,6 @@
 <!-- ══════════════════════════ HEADER ══════════════════════════ -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:08080B,35:5E0B18,70:B5122A,100:25152D&text=INJORA&fontSize=80&fontColor=F2F2F4&fontAlign=50&fontAlignY=38&animation=fadeIn&desc=Full-Stack%20Shinigami&descSize=18&descAlignY=60&descAlign=50&stroke=E21D35&strokeWidth=1" width="100%" alt="Injora header"/>
+  <img src="https://raw.githubusercontent.com/Injora/Injora/main/assets/blood-header.svg" width="100%" alt="Injora header with blood dripping from its edge"/>
 </p>
 
 <p align="center">
