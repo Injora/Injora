@@ -18,7 +18,7 @@
 </p>
 
 <!-- ══════════════════════════ ABOUT ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/mask.svg" height="26" align="center" alt=""/>&nbsp;Shinigami Profile</h2>
+<h2 align="center"><img src="assets/icons/mask.svg" height="39" align="center" alt=""/>&nbsp;Shinigami Profile</h2>
 
 ```js
 const soulReaper = {
@@ -35,16 +35,16 @@ const soulReaper = {
 ```
 
 <!-- ══════════════════════════ STACK ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/blade.svg" height="26" align="center" alt=""/>&nbsp;Zanpakutō Arsenal</h2>
+<h2 align="center"><img src="assets/icons/blade.svg" height="39" align="center" alt=""/>&nbsp;Zanpakutō Arsenal</h2>
 
 <table align="center">
   <tr>
     <td align="center"><b>Frontend</b></td>
-    <td><img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind&theme=dark" alt="Frontend"/></td>
+    <td><img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,astro,tailwind&theme=dark" alt="Frontend"/></td>
   </tr>
   <tr>
     <td align="center"><b>Backend</b></td>
-    <td><img src="https://skillicons.dev/icons?i=nodejs,express,django,python,supabase&theme=dark" alt="Backend"/></td>
+    <td><img src="https://skillicons.dev/icons?i=nodejs,express,go,django,python,supabase&theme=dark" alt="Backend"/></td>
   </tr>
   <tr>
     <td align="center"><b>Databases</b></td>
@@ -61,7 +61,7 @@ const soulReaper = {
 </table>
 
 <!-- ══════════════════════════ PROJECTS ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/flame.svg" height="26" align="center" alt=""/>&nbsp;Bankai Releases</h2>
+<h2 align="center"><img src="assets/icons/flame.svg" height="39" align="center" alt=""/>&nbsp;Bankai Releases</h2>
 
 <table align="center">
   <tr>
@@ -84,12 +84,12 @@ const soulReaper = {
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/nst--events">NST-Events</a></h3>
-      Campus event platform for 3000+ students: discovery, team registration with waitlists, leaderboards, and cryptographically rotating QR attendance (TOTP + geofence). Two-tier RBAC backed by Postgres Row-Level Security.
+      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/nst-sdc/nst-funds">NST-Funds</a></h3>
+      Fund request and expense tracking portal for college clubs: budget requests with line-item estimates, admin review and partial approvals, UPI payment proofs, bill uploads and settlement, plus a public event gallery. Every action is logged per club admin.
       <br/><br/>
-      <code>TypeScript</code> <code>Express</code> <code>PostgreSQL</code> <code>OAuth</code>
+      <code>Go</code> <code>Astro</code> <code>TypeScript</code> <code>PostgreSQL</code>
       <br/><br/>
-      <a href="https://github.com/Injora/nst--events">Code</a>
+      <a href="https://github.com/nst-sdc/nst-funds">Code</a>
     </td>
     <td width="50%" valign="top">
       <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/Seireitei">Bleach Battle Arena</a></h3>
@@ -103,7 +103,7 @@ const soulReaper = {
 </table>
 
 <!-- ══════════════════════════ STATS ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/pulse.svg" height="26" align="center" alt=""/>&nbsp;Reiatsu Readings</h2>
+<h2 align="center"><img src="assets/icons/pulse.svg" height="39" align="center" alt=""/>&nbsp;Reiatsu Readings</h2>
 
 <p align="center">
   <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&include_all_commits=true&custom_title=Reiatsu%20Stats&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E&ring_color=B5122A" alt="GitHub stats"/>
@@ -119,7 +119,7 @@ const soulReaper = {
 </p>
 
 <!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/crescent.svg" height="26" align="center" alt=""/>&nbsp;Getsuga Tenshō</h2>
+<h2 align="center"><img src="assets/icons/crescent.svg" height="39" align="center" alt=""/>&nbsp;Getsuga Tenshō</h2>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Injora/Injora/output/ichigo-getsuga.gif" width="100%" alt="Pixel-art Ichigo swings Zangetsu and fires Getsuga Tenshō, igniting the contribution graph orange"/>
