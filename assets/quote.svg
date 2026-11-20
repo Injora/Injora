@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="110" viewBox="0 0 1000 110" role="img" aria-label="“The code is my zanpakutō, and every commit sharpens the blade.”">
+<defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset=".46" stop-color="#E9E6EC"/>
+  <stop offset=".54" stop-color="#ABA6B0"/><stop offset="1" stop-color="#F2F0F4"/></linearGradient>
+  <linearGradient id="b" x1="0" x2="1"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset=".5" stop-color="#E21D35"/><stop offset="1" stop-color="#B5122A" stop-opacity="0"/></linearGradient></defs>
+<text x="500" y="50" text-anchor="middle" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-style="italic" font-weight="300" font-size="27" fill="url(#metal)">“The code is my zanpakutō, and every commit sharpens the blade.”</text>
+<path d="M250,74 L750,72 L742,76 L258,77Z" fill="url(#b)"/>
+</svg>

@@ -10,15 +10,18 @@
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/injora-injora-4b1554346/"><img src="https://img.shields.io/badge/LinkedIn-B5122A?style=for-the-badge&logo=linkedin&logoColor=F2F2F4" alt="LinkedIn"/></a>
-  <a href="https://injoradev.in"><img src="https://img.shields.io/badge/Portfolio-6E0B19?style=for-the-badge&logo=googlechrome&logoColor=F2F2F4" alt="Portfolio"/></a>
-  <a href="mailto:injoraman@gmail.com"><img src="https://img.shields.io/badge/Email-151118?style=for-the-badge&logo=gmail&logoColor=E21D35" alt="Email"/></a>
-  <a href="https://github.com/Injora"><img src="https://img.shields.io/github/followers/Injora?style=for-the-badge&logo=github&logoColor=F2F2F4&label=Followers&labelColor=151118&color=B5122A" alt="Followers"/></a>
-  <img src="https://komarev.com/ghpvc/?username=Injora&label=Souls%20Sensed&color=b5122a&style=for-the-badge" alt="Profile views"/>
+  <a href="https://www.linkedin.com/in/injora-injora-4b1554346/"><img src="assets/buttons/linkedin.svg" height="46" alt="LinkedIn"/></a>
+  <a href="https://injoradev.in"><img src="assets/buttons/portfolio.svg" height="46" alt="Portfolio"/></a>
+  <a href="mailto:injoraman@gmail.com"><img src="assets/buttons/email.svg" height="46" alt="Email"/></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Injora"><img src="https://img.shields.io/github/followers/Injora?style=flat-square&logo=github&logoColor=F2F2F4&label=Followers&labelColor=0B0B0F&color=6E0B19" alt="Followers"/></a>
+  <img src="https://komarev.com/ghpvc/?username=Injora&label=Souls%20Sensed&color=6e0b19&style=flat-square" alt="Profile views"/>
 </p>
 
 <!-- ══════════════════════════ ABOUT ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/mask.svg" height="39" align="center" alt=""/>&nbsp;Shinigami Profile</h2>
+<p align="center"><img src="assets/sections/profile.svg" width="100%" alt=""/></p>
 
 ```js
 const soulReaper = {
@@ -35,7 +38,7 @@ const soulReaper = {
 ```
 
 <!-- ══════════════════════════ STACK ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/blade.svg" height="39" align="center" alt=""/>&nbsp;Zanpakutō Arsenal</h2>
+<p align="center"><img src="assets/sections/arsenal.svg" width="100%" alt=""/></p>
 
 <table align="center">
   <tr>
@@ -61,49 +64,19 @@ const soulReaper = {
 </table>
 
 <!-- ══════════════════════════ PROJECTS ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/flame.svg" height="39" align="center" alt=""/>&nbsp;Bankai Releases</h2>
+<p align="center"><img src="assets/sections/releases.svg" width="100%" alt=""/></p>
 
-<table align="center">
-  <tr>
-    <td width="50%" valign="top">
-      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/RecomOS">OpenSource Compass</a></h3>
-      Helps beginners find GSoC / open-source orgs that actually fit them. Researches real orgs (GitHub activity, contribution docs, good-first-issues), returns an evidence-backed top 5 and a personalized 30-day roadmap. No fabricated claims.
-      <br/><br/>
-      <code>TypeScript</code> <code>Prisma</code> <code>PostgreSQL</code> <code>GitHub API</code>
-      <br/><br/>
-      <a href="https://recomos.onrender.com/">Live</a> · <a href="https://github.com/Injora/RecomOS">Code</a>
-    </td>
-    <td width="50%" valign="top">
-      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/shuttle-tracker">Shuttle Tracker</a></h3>
-      Live shuttle tracking for a college's off-campus hostel network, with student, driver, and admin roles. PostGIS geofenced pickup requests, quorum-triggered dispatch, and real-time GPS streaming, all enforced server-side.
-      <br/><br/>
-      <code>React Native</code> <code>Expo</code> <code>Supabase</code> <code>PostGIS</code>
-      <br/><br/>
-      <a href="https://github.com/Injora/shuttle-tracker">Code</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/nst-sdc/nst-funds">NST-Funds</a></h3>
-      Fund request and expense tracking portal for college clubs: budget requests with line-item estimates, admin review and partial approvals, UPI payment proofs, bill uploads and settlement, plus a public event gallery. Every action is logged per club admin.
-      <br/><br/>
-      <code>Go</code> <code>Astro</code> <code>TypeScript</code> <code>PostgreSQL</code>
-      <br/><br/>
-      <a href="https://github.com/nst-sdc/nst-funds">Code</a>
-    </td>
-    <td width="50%" valign="top">
-      <h3><img src="assets/icons/marker.svg" height="18" alt=""/> <a href="https://github.com/Injora/Seireitei">Bleach Battle Arena</a></h3>
-      2-player drafting and battle simulator powered by a live Bleach API. Draft teams of 3, clash on spiritual pressure with race-based multipliers, and trigger one-time Bankai / Resurrección revivals with cinematic animations.
-      <br/><br/>
-      <code>JavaScript</code> <code>HTML</code> <code>CSS</code> <code>REST API</code>
-      <br/><br/>
-      <a href="https://seireitei.injoradev.in/">Live</a> · <a href="https://github.com/Injora/Seireitei">Code</a>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://github.com/Injora/RecomOS"><img src="assets/cards/compass.svg" width="49%" alt="OpenSource Compass: finds open-source orgs that fit beginners. TypeScript, Prisma, PostgreSQL, GitHub API."/></a>
+  <a href="https://github.com/Injora/shuttle-tracker"><img src="assets/cards/shuttle.svg" width="49%" alt="Shuttle Tracker: live shuttle tracking for a college hostel network. React Native, Expo, Supabase, PostGIS."/></a>
+  <a href="https://github.com/nst-sdc/nst-funds"><img src="assets/cards/funds.svg" width="49%" alt="NST-Funds: fund request and expense tracking for college clubs. Go, Astro, TypeScript, PostgreSQL."/></a>
+  <a href="https://github.com/Injora/Seireitei"><img src="assets/cards/arena.svg" width="49%" alt="Bleach Battle Arena: two-player drafting and battle simulator. JavaScript, HTML, CSS, REST API."/></a>
+</p>
+
+<p align="center"><sub>Click a card for the code. Try two of them live: <a href="https://recomos.onrender.com/">OpenSource Compass</a> and <a href="https://seireitei.injoradev.in/">Bleach Battle Arena</a>.</sub></p>
 
 <!-- ══════════════════════════ STATS ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/pulse.svg" height="39" align="center" alt=""/>&nbsp;Reiatsu Readings</h2>
+<p align="center"><img src="assets/sections/readings.svg" width="100%" alt=""/></p>
 
 <p align="center">
   <img height="180" src="https://github-stats-extended.vercel.app/api?username=Injora&show_icons=true&custom_title=Reiatsu%20Stats&bg_color=0B0B0F&title_color=E21D35&text_color=F2F2F4&icon_color=B5122A&border_color=38252E&ring_color=B5122A" alt="GitHub stats"/>
@@ -119,14 +92,14 @@ const soulReaper = {
 </p>
 
 <!-- ══════════════════════════ GETSUGA ══════════════════════════ -->
-<h2 align="center"><img src="assets/icons/crescent.svg" height="39" align="center" alt=""/>&nbsp;Getsuga Tenshō</h2>
+<p align="center"><img src="assets/sections/getsuga.svg" width="100%" alt=""/></p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Injora/Injora/output/ichigo-getsuga.gif" width="100%" alt="Pixel-art Ichigo swings Zangetsu and fires Getsuga Tenshō, igniting the contribution graph orange"/>
 </p>
 
 <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
-<p align="center"><i>“The code is my zanpakutō, and every commit sharpens the blade.”</i></p>
+<p align="center"><img src="assets/quote.svg" width="100%" alt="“The code is my zanpakutō, and every commit sharpens the blade.”"/></p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Injora/Injora/main/assets/blood-pool.svg" width="100%" alt="Blood pool bursting to the bass"/>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50" role="img" aria-label="Portfolio">
+<defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset=".46" stop-color="#E9E6EC"/>
+  <stop offset=".54" stop-color="#ABA6B0"/><stop offset="1" stop-color="#F2F0F4"/></linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5A0914"/><stop offset="1" stop-color="#2A050C"/></linearGradient></defs>
+<path d="M12,1 H199 V38 L188,49 H1 V12Z" fill="url(#bg)" stroke="#E21D35" stroke-width="1.2"/>
+<path d="M16,5 H195" stroke="#FF4157" stroke-opacity=".35"/>
+<path d="M24,25 l5,-8 l5,8 l-5,8z" fill="#E21D35"/>
+<text x="110.0" y="31" text-anchor="middle" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-weight="800" font-size="17" letter-spacing="1" fill="url(#metal)">Portfolio</text>
+</svg>

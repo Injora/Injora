@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="270" viewBox="0 0 500 270" role="img" aria-label="Shuttle Tracker: Live shuttle tracking for a college's off-campus hostel network, with student, driver and admin roles. PostGIS geofenced pickups, quorum-triggered dispatch and real-time GPS streaming, all enforced server-side.">
+<defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset=".46" stop-color="#E9E6EC"/>
+  <stop offset=".54" stop-color="#ABA6B0"/><stop offset="1" stop-color="#F2F0F4"/></linearGradient><linearGradient id="drip" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#6E0B19"/><stop offset="1" stop-color="#B5122A"/></linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140A0E"/><stop offset=".45" stop-color="#0B0B0F"/></linearGradient>
+  <clipPath id="c"><rect width="500" height="270" rx="8"/></clipPath>
+</defs>
+<g clip-path="url(#c)">
+  <rect width="500" height="270" fill="url(#bg)"/>
+  <text y="44" font-family="'SF Mono',Menlo,Consolas,'Courier New',monospace" font-size="12" font-weight="700" fill="#B5122A" opacity=".16" text-anchor="middle"><tspan x="478" dy="0">0</tspan><tspan x="478" dy="15">0</tspan><tspan x="478" dy="15">0</tspan><tspan x="478" dy="15">0</tspan><tspan x="478" dy="15">1</tspan><tspan x="478" dy="15">1</tspan><tspan x="478" dy="15">1</tspan><tspan x="478" dy="15">1</tspan><tspan x="478" dy="15">1</tspan><tspan x="478" dy="15">0</tspan><tspan x="478" dy="15">0</tspan><tspan x="478" dy="15">0</tspan><tspan x="478" dy="15">1</tspan><tspan x="478" dy="15">1</tspan></text>
+  <rect width="500" height="4" fill="#B5122A"/>
+  <g fill="url(#drip)"><path d="M234.2,3 C238.0,6.5 237.1,7.2 237.1,10.7 A2.2,2.2 0 0 0 241.5,10.7 C241.5,7.2 240.6,6.5 244.5,3 Z"/><path d="M452.5,3 C457.1,10.9 456.4,19.7 456.4,23.2 A2.2,2.2 0 0 0 460.8,23.2 C460.8,19.7 460.1,10.9 464.7,3 Z"/><path d="M285.7,3 C290.9,6.3 290.4,6.6 290.4,10.1 A2.2,2.2 0 0 0 294.8,10.1 C294.8,6.6 294.3,6.3 299.5,3 Z"/><path d="M190.2,3 C193.4,5.8 192.2,5.3 192.2,8.8 A2.2,2.2 0 0 0 196.6,8.8 C196.6,5.3 195.5,5.8 198.6,3 Z"/><path d="M324.5,3 C327.5,5.8 326.3,5.3 326.3,8.8 A2.2,2.2 0 0 0 330.7,8.8 C330.7,5.3 329.5,5.8 332.6,3 Z"/><path d="M58.6,3 C63.8,7.0 63.3,8.8 63.3,12.3 A2.2,2.2 0 0 0 67.7,12.3 C67.7,8.8 67.3,7.0 72.5,3 Z"/><path d="M212.4,3 C216.6,6.0 215.8,5.9 215.8,9.5 A2.2,2.2 0 0 0 220.2,9.5 C220.2,5.9 219.4,6.0 223.6,3 Z"/></g>
+</g>
+<rect x=".5" y=".5" width="499" height="269" rx="8" fill="none" stroke="#38252E"/>
+<svg x="26" y="37" width="27.0" height="27" viewBox="0 0 32 32"><defs><linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3048"/><stop offset="0.55" stop-color="#B5122A"/><stop offset="1" stop-color="#6E0B19"/></linearGradient></defs>
+<path d="M16 2l5 14-5 14-5-14z" fill="url(#r)"/>
+<path d="M16 7l2.2 9-2.2 9-2.2-9z" fill="#050507"/>
+</svg>
+<text x="56" y="58" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-weight="900" font-size="25" letter-spacing=".5" fill="url(#metal)">Shuttle Tracker</text>
+<text y="96" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-size="15" fill="#B8B6BE"><tspan x="30" dy="0">Live shuttle tracking for a college's off-campus hostel</tspan><tspan x="30" dy="22">network, with student, driver and admin roles. PostGIS</tspan><tspan x="30" dy="22">geofenced pickups, quorum-triggered dispatch and real-time</tspan><tspan x="30" dy="22">GPS streaming, all enforced server-side.</tspan></text>
+<rect x="30" y="220" width="115.6" height="26" rx="3" fill="#1A0D11" stroke="#8F1628" stroke-width="1"/><text x="87.8" y="237.5" text-anchor="middle" font-family="'SF Mono',Menlo,Consolas,'Courier New',monospace" font-size="12.5" fill="#F2F2F4">React Native</text><rect x="153.6" y="220" width="53.2" height="26" rx="3" fill="#1A0D11" stroke="#8F1628" stroke-width="1"/><text x="180.2" y="237.5" text-anchor="middle" font-family="'SF Mono',Menlo,Consolas,'Courier New',monospace" font-size="12.5" fill="#F2F2F4">Expo</text><rect x="214.8" y="220" width="84.4" height="26" rx="3" fill="#1A0D11" stroke="#8F1628" stroke-width="1"/><text x="257.0" y="237.5" text-anchor="middle" font-family="'SF Mono',Menlo,Consolas,'Courier New',monospace" font-size="12.5" fill="#F2F2F4">Supabase</text><rect x="307.20000000000005" y="220" width="76.6" height="26" rx="3" fill="#1A0D11" stroke="#8F1628" stroke-width="1"/><text x="345.5" y="237.5" text-anchor="middle" font-family="'SF Mono',Menlo,Consolas,'Courier New',monospace" font-size="12.5" fill="#F2F2F4">PostGIS</text>
+</svg>

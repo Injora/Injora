@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="92" viewBox="0 0 1000 92" role="img" aria-label="Getsuga Tenshō">
+<defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset=".46" stop-color="#E9E6EC"/>
+  <stop offset=".54" stop-color="#ABA6B0"/><stop offset="1" stop-color="#F2F0F4"/></linearGradient><linearGradient id="drip" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#6E0B19"/><stop offset="1" stop-color="#B5122A"/></linearGradient>
+  <linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset="1" stop-color="#E21D35"/></linearGradient>
+  <linearGradient id="r" x1="1" x2="0"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset="1" stop-color="#E21D35"/></linearGradient>
+  <linearGradient id="slash" x1="0" x2="1"><stop offset="0" stop-color="#6E0B19" stop-opacity="0"/><stop offset=".2" stop-color="#B5122A"/><stop offset=".8" stop-color="#B5122A"/><stop offset="1" stop-color="#6E0B19" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="60" y="37.4" width="255.5" height="1.2" fill="url(#l)"/>
+<rect x="684.5" y="37.4" width="255.5" height="1.2" fill="url(#r)"/>
+<path d="M318.5,38 l-5,-5 l-5,5 l5,5z M681.5,38 l5,-5 l5,5 l-5,5z" fill="#E21D35"/>
+<svg x="350" y="19" width="36.0" height="54" viewBox="0 0 32 48">
+<path d="M9 2.5c10 2 16.5 7.3 16.5 13.5S19 27.5 9 29.5c5.2-3.3 8-8.2 8-13.5S14.2 5.8 9 2.5z" fill="#FF3048" opacity=".35" transform="translate(1 0)"/>
+<path d="M8 2.5c10 2 16.5 7.3 16.5 13.5S18 27.5 8 29.5c5.2-3.3 8-8.2 8-13.5S13.2 5.8 8 2.5z" fill="#050507" stroke="#E21D35" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M13 6.5c5 2.6 7.8 6 7.8 9.5" fill="none" stroke="#B5122A" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
+<text x="399.5" y="49" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-weight="900" font-size="30" letter-spacing="1.5" fill="url(#metal)" stroke="#B5122A" stroke-width=".6" paint-order="stroke">Getsuga Tenshō</text>
+<path d="M395.5,57 L654.5,56 L650.5,60 L399.5,60.5Z" fill="url(#slash)"/>
+<g fill="url(#drip)"><path d="M454.1,59 C456.9,63.4 456.1,67.1 456.1,69.8 A1.7,1.7 0 0 0 459.5,69.8 C459.5,67.1 458.7,63.4 461.4,59 Z"/><path d="M537.7,59 C539.7,63.3 538.7,67.0 538.7,69.7 A1.7,1.7 0 0 0 542.1,69.7 C542.1,67.0 541.0,63.3 543.0,59 Z"/><path d="M617.8,59 C620.7,62.1 620.0,63.3 620.0,66.0 A1.7,1.7 0 0 0 623.4,66.0 C623.4,63.3 622.7,62.1 625.6,59 Z"/></g>
+</svg>

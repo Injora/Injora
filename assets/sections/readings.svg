@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="92" viewBox="0 0 1000 92" role="img" aria-label="Reiatsu Readings">
+<defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset=".46" stop-color="#E9E6EC"/>
+  <stop offset=".54" stop-color="#ABA6B0"/><stop offset="1" stop-color="#F2F0F4"/></linearGradient><linearGradient id="drip" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#6E0B19"/><stop offset="1" stop-color="#B5122A"/></linearGradient>
+  <linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset="1" stop-color="#E21D35"/></linearGradient>
+  <linearGradient id="r" x1="1" x2="0"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset="1" stop-color="#E21D35"/></linearGradient>
+  <linearGradient id="slash" x1="0" x2="1"><stop offset="0" stop-color="#6E0B19" stop-opacity="0"/><stop offset=".2" stop-color="#B5122A"/><stop offset=".8" stop-color="#B5122A"/><stop offset="1" stop-color="#6E0B19" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="60" y="37.4" width="238.0" height="1.2" fill="url(#l)"/>
+<rect x="702.0" y="37.4" width="238.0" height="1.2" fill="url(#r)"/>
+<path d="M301.0,38 l-5,-5 l-5,5 l5,5z M699.0,38 l5,-5 l5,5 l-5,5z" fill="#E21D35"/>
+<svg x="332" y="19" width="36.0" height="54" viewBox="0 0 32 48">
+<path d="M2 17h6l2.5-6 4 13 3.5-18 3.5 14 2-3H30" fill="none" stroke="#6E0B19" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/>
+<path d="M2 17h6l2.5-6 4 13 3.5-18 3.5 14 2-3H30" fill="none" stroke="#E21D35" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<text x="382.0" y="49" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-weight="900" font-size="30" letter-spacing="1.5" fill="url(#metal)" stroke="#B5122A" stroke-width=".6" paint-order="stroke">Reiatsu Readings</text>
+<path d="M378.0,57 L672.0,56 L668.0,60 L382.0,60.5Z" fill="url(#slash)"/>
+<g fill="url(#drip)"><path d="M425.8,59 C427.8,61.2 426.8,60.8 426.8,63.5 A1.7,1.7 0 0 0 430.2,63.5 C430.2,60.8 429.1,61.2 431.2,59 Z"/><path d="M511.2,59 C514.2,61.9 513.4,62.8 513.4,65.5 A1.7,1.7 0 0 0 516.8,65.5 C516.8,62.8 516.1,61.9 519.0,59 Z"/><path d="M612.1,59 C614.8,63.0 614.1,66.0 614.1,68.7 A1.7,1.7 0 0 0 617.5,68.7 C617.5,66.0 616.7,63.0 619.4,59 Z"/></g>
+</svg>
