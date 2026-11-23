@@ -8,7 +8,7 @@ const token = process.env.GITHUB_TOKEN;
 if (!token) throw new Error("GITHUB_TOKEN is required");
 
 const THEME = JSON.parse(readFileSync(new URL("../theme.json", import.meta.url)));
-const C = { bg: THEME.bg, text: THEME.text, line: THEME.blood, point: THEME.accent, glow: THEME.deepRed, violet: THEME.violetDark, muted: THEME.muted, grid: THEME.grid, border: THEME.border };
+const C = { bg: THEME.bg, text: THEME.text, line: THEME.gold, point: THEME.goldHi, glow: THEME.goldLo, deep: THEME.sea, muted: THEME.muted, grid: THEME.grid, border: THEME.border };
 const DAYS = 31;
 
 const to = new Date();
@@ -60,7 +60,7 @@ const dots = pts.map(([px, py], i) =>
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
 <style>
-  .title{font:700 20px 'Segoe UI',Ubuntu,sans-serif;fill:${C.line}}
+  .title{font:900 21px Rockwell,'Roboto Slab',Georgia,serif;fill:${C.line}}
   .sub{font:500 13px 'Segoe UI',Ubuntu,sans-serif;fill:${C.muted}}
   .axis{font:500 11px 'Segoe UI',Ubuntu,sans-serif;fill:${C.muted}}
   .draw{stroke-dasharray:4000;stroke-dashoffset:4000;animation:draw 2.4s ease-out forwards}
@@ -70,15 +70,15 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0" stop-color="${C.line}" stop-opacity="0.35"/>
     <stop offset="0.6" stop-color="${C.glow}" stop-opacity="0.18"/>
-    <stop offset="1" stop-color="${C.violet}" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="${C.deep}" stop-opacity="0.05"/>
   </linearGradient>
   <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="${C.glow}"/><stop offset="1" stop-color="${C.line}"/>
   </linearGradient>
 </defs>
 <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="${C.bg}" stroke="${C.border}"/>
-<text x="${L - 30}" y="36" class="title">${user}'s Reiatsu Flow</text>
-<text x="${W - R}" y="36" text-anchor="end" class="sub">${total} contributions · last ${DAYS} days</text>
+<text x="${L - 30}" y="36" class="title">${user}'s Tide Chart</text>
+<text x="${W - R}" y="36" text-anchor="end" class="sub">${total} contributions in the last ${DAYS} days</text>
 ${grid}${labels}
 <path d="${area}" fill="url(#fill)"/>
 <path d="${line}" fill="none" stroke="url(#stroke)" stroke-width="3" stroke-linejoin="round" class="draw"/>

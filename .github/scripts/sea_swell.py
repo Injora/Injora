@@ -1,8 +1,8 @@
-"""Blood pool footer: a pool of blood on a subwoofer. Every bass hit makes the
-surface spike, droplets burst up and fall back with splashes, and ripples spread
-out from the centre. Pure SVG + CSS keyframes (no SMIL/JS) so it animates inside a GitHub README <img>.
+"""Sea swell footer: open sea on a subwoofer. Every bass hit makes the surface
+spike, spray bursts up and falls back with splashes, and ripples spread out
+from the centre. Pure SVG + CSS keyframes (no SMIL/JS) so it animates inside a GitHub README <img>.
 
-Usage: python blood_pool.py <out.svg>
+Usage: python sea_swell.py <out.svg>
 """
 import json
 import math
@@ -62,9 +62,9 @@ def build():
     add = body.append
     defs = f"""<defs>
   <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="{T["crimson"]}"/>
-    <stop offset="0.12" stop-color="{T["deepRed"]}"/>
-    <stop offset="0.55" stop-color="#3a0610"/>
+    <stop offset="0" stop-color="{T["seaHi"]}"/>
+    <stop offset="0.12" stop-color="{T["sea"]}"/>
+    <stop offset="0.55" stop-color="{T["panel"]}"/>
     <stop offset="1" stop-color="{T["bgDeep"]}"/>
   </linearGradient>
   <linearGradient id="ends" x1="0" y1="0" x2="1" y2="0">
@@ -75,13 +75,13 @@ def build():
   </linearGradient>
   <mask id="fade"><rect width="{W}" height="{H}" fill="url(#ends)"/></mask>
   <radialGradient id="drop" cx="0.35" cy="0.3" r="0.8">
-    <stop offset="0" stop-color="{T["accent"]}"/>
-    <stop offset="0.45" stop-color="{T["crimson"]}"/>
-    <stop offset="1" stop-color="{T["deepRed"]}"/>
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset="0.45" stop-color="{T["foam"]}"/>
+    <stop offset="1" stop-color="{T["seaHi"]}"/>
   </radialGradient>
   <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-    <stop offset="0" stop-color="{T["crimson"]}" stop-opacity="0.45"/>
-    <stop offset="0.6" stop-color="{T["deepRed"]}" stop-opacity="0.15"/>
+    <stop offset="0" stop-color="{T["gold"]}" stop-opacity="0.35"/>
+    <stop offset="0.6" stop-color="{T["sea"]}" stop-opacity="0.2"/>
     <stop offset="1" stop-color="{T["bgDeep"]}" stop-opacity="0"/>
   </radialGradient>
 </defs>"""
@@ -105,7 +105,7 @@ def build():
         css.append(f"@keyframes s{i}{{{kf}}}")
         add(f'<g class="a" style="animation-name:s{i};animation-timing-function:step-end" opacity="{1 if i == 0 else 0}">'
             f'<path fill="url(#pool)" d="{surface_path(t, True)}"/>'
-            f'<path fill="none" stroke="{T["accent"]}" stroke-width="1.6" stroke-opacity="0.75" d="{surface_path(t, False)}"/></g>')
+            f'<path fill="none" stroke="{T["foam"]}" stroke-width="1.6" stroke-opacity="0.75" d="{surface_path(t, False)}"/></g>')
 
     # ripples spreading from the centre on each hit
     for bi, b in enumerate(BOOMS):
@@ -117,7 +117,7 @@ def build():
                        f"{pct(t0)}{{transform:scale(0.02);opacity:0.8}}{pct(t1)}{{transform:scale(1);opacity:0}}"
                        f"{pct(min(t1 + 0.01, DUR))},100%{{transform:scale(1);opacity:0}}}}")
             add(f'<ellipse class="a c" style="animation-name:{name};animation-timing-function:linear" opacity="0" '
-                f'cx="{W / 2}" cy="{Y0 + 8}" rx="{W * 0.5}" ry="22" fill="none" stroke="{T["blood"]}" stroke-width="1.4" vector-effect="non-scaling-stroke"/>')
+                f'cx="{W / 2}" cy="{Y0 + 8}" rx="{W * 0.5}" ry="22" fill="none" stroke="{T["foam"]}" stroke-width="1.4" vector-effect="non-scaling-stroke"/>')
     add('</g>')
 
     # droplets + splashes
@@ -147,7 +147,7 @@ def build():
             css.append(f"@keyframes p{d}{{0%,{pct(ts)}{{transform:scale(0.05);opacity:0}}{pct(ts + 0.001)}{{transform:scale(0.05);opacity:0.9}}"
                        f"{pct(te)}{{transform:scale(1);opacity:0}}100%{{transform:scale(1);opacity:0}}}}")
             add(f'<ellipse class="a c" style="animation-name:p{d};animation-timing-function:ease-out" opacity="0" '
-                f'cx="{x0 + vx * flight:.1f}" cy="{Y0}" rx="{r * 4:.1f}" ry="{r * 1.1:.1f}" fill="none" stroke="{T["blood"]}" stroke-width="1.2" vector-effect="non-scaling-stroke"/>')
+                f'cx="{x0 + vx * flight:.1f}" cy="{Y0}" rx="{r * 4:.1f}" ry="{r * 1.1:.1f}" fill="none" stroke="{T["foam"]}" stroke-width="1.2" vector-effect="non-scaling-stroke"/>')
             d += 1
 
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">\n'
@@ -155,7 +155,7 @@ def build():
 
 
 if __name__ == "__main__":
-    out = Path(sys.argv[1] if len(sys.argv) > 1 else "blood-pool.svg")
+    out = Path(sys.argv[1] if len(sys.argv) > 1 else "sea-swell.svg")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(build())
     print(f"wrote {out} ({out.stat().st_size // 1024} KB)")

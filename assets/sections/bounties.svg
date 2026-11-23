@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="92" viewBox="0 0 1000 92" role="img" aria-label="Bounty Board">
+<defs><linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFD873"/><stop offset=".48" stop-color="#E8B53A"/>
+  <stop offset=".52" stop-color="#8A6218"/><stop offset="1" stop-color="#E8B53A"/></linearGradient>
+  <linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#8A6218" stop-opacity="0"/><stop offset="1" stop-color="#E8B53A"/></linearGradient>
+  <linearGradient id="r" x1="1" x2="0"><stop offset="0" stop-color="#8A6218" stop-opacity="0"/><stop offset="1" stop-color="#E8B53A"/></linearGradient>
+</defs>
+<path d="M60.0,40 H324.0" stroke="url(#l)" stroke-width="3" stroke-dasharray="5 2"/><path d="M60.0,40 H324.0" stroke="#030D17" stroke-opacity=".55" stroke-width="1" stroke-dasharray="1.5 5.5" stroke-dashoffset="-3"/><path d="M676.0,40 H940.0" stroke="url(#r)" stroke-width="3" stroke-dasharray="5 2"/><path d="M676.0,40 H940.0" stroke="#030D17" stroke-opacity=".55" stroke-width="1" stroke-dasharray="1.5 5.5" stroke-dashoffset="-3"/>
+<circle cx="328.0" cy="40" r="4" fill="none" stroke="#E8B53A" stroke-width="2"/><circle cx="672.0" cy="40" r="4" fill="none" stroke="#E8B53A" stroke-width="2"/>
+<svg x="358" y="14" width="48" height="48" viewBox="0 0 48 48"><rect x="9" y="4" width="30" height="40" rx="1.5" fill="#EAD5A6"/><rect x="14" y="13" width="20" height="16" fill="#B98A4E"/>
+<path d="M13,9.5 H35 M15,33 H33 M17,38 H31" stroke="#3B2513" stroke-width="2"/><circle cx="24" cy="4.5" r="2.2" fill="#D33A3A"/></svg>
+<text x="420.0" y="51" font-family="Rockwell,'Roboto Slab',Clarendon,Georgia,serif" font-weight="900" font-size="30" letter-spacing="1" fill="url(#gold)" stroke="#3B2513" stroke-width=".8" paint-order="stroke">Bounty Board</text>
+<path d="M420.0,64 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 " fill="none" stroke="#2E86AB" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

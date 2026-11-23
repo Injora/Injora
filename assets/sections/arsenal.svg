@@ -1,23 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="92" viewBox="0 0 1000 92" role="img" aria-label="Zanpakutō Arsenal">
-<defs><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#FFFFFF"/><stop offset=".46" stop-color="#E9E6EC"/>
-  <stop offset=".54" stop-color="#ABA6B0"/><stop offset="1" stop-color="#F2F0F4"/></linearGradient><linearGradient id="drip" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#6E0B19"/><stop offset="1" stop-color="#B5122A"/></linearGradient>
-  <linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset="1" stop-color="#E21D35"/></linearGradient>
-  <linearGradient id="r" x1="1" x2="0"><stop offset="0" stop-color="#B5122A" stop-opacity="0"/><stop offset="1" stop-color="#E21D35"/></linearGradient>
-  <linearGradient id="slash" x1="0" x2="1"><stop offset="0" stop-color="#6E0B19" stop-opacity="0"/><stop offset=".2" stop-color="#B5122A"/><stop offset=".8" stop-color="#B5122A"/><stop offset="1" stop-color="#6E0B19" stop-opacity="0"/></linearGradient>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="92" viewBox="0 0 1000 92" role="img" aria-label="Devil Fruit Arsenal">
+<defs><linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFD873"/><stop offset=".48" stop-color="#E8B53A"/>
+  <stop offset=".52" stop-color="#8A6218"/><stop offset="1" stop-color="#E8B53A"/></linearGradient>
+  <linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#8A6218" stop-opacity="0"/><stop offset="1" stop-color="#E8B53A"/></linearGradient>
+  <linearGradient id="r" x1="1" x2="0"><stop offset="0" stop-color="#8A6218" stop-opacity="0"/><stop offset="1" stop-color="#E8B53A"/></linearGradient>
 </defs>
-<rect x="60" y="37.4" width="229.2" height="1.2" fill="url(#l)"/>
-<rect x="710.8" y="37.4" width="229.2" height="1.2" fill="url(#r)"/>
-<path d="M292.2,38 l-5,-5 l-5,5 l5,5z M707.8,38 l5,-5 l5,5 l-5,5z" fill="#E21D35"/>
-<svg x="323" y="19" width="36.0" height="54" viewBox="0 0 32 48"><defs><linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3048"/><stop offset="0.55" stop-color="#B5122A"/><stop offset="1" stop-color="#6E0B19"/></linearGradient></defs>
-<path d="M28.5 3.5L12 20l-1.6-1.6L26.2 2.2c1.2-.4 2.6.1 2.3 1.3z" fill="url(#r)"/>
-<path d="M28.5 3.5L12.8 19.2" stroke="#FFB3BD" stroke-width=".7" stroke-opacity=".8"/>
-<path d="M8.2 17.4l6.4 6.4" stroke="#E21D35" stroke-width="2.6" stroke-linecap="round"/>
-<path d="M11.2 20.8l-6.4 6.4" stroke="#3A0A12" stroke-width="3.2" stroke-linecap="round"/>
-<path d="M9.4 22.6l1 1M7.6 24.4l1 1" stroke="#B5122A" stroke-width="1"/>
-</svg>
-<text x="373.2" y="49" font-family="'Helvetica Neue','Arial Black',Arial,sans-serif" font-weight="900" font-size="30" letter-spacing="1.5" fill="url(#metal)" stroke="#B5122A" stroke-width=".6" paint-order="stroke">Zanpakutō Arsenal</text>
-<path d="M369.2,57 L680.8,56 L676.8,60 L373.2,60.5Z" fill="url(#slash)"/>
-<g fill="url(#drip)"><path d="M458.1,59 C461.0,61.0 460.2,60.3 460.2,63.0 A1.7,1.7 0 0 0 463.6,63.0 C463.6,60.3 462.8,61.0 465.7,59 Z"/><path d="M549.4,59 C552.1,62.8 551.3,65.5 551.3,68.2 A1.7,1.7 0 0 0 554.7,68.2 C554.7,65.5 553.9,62.8 556.5,59 Z"/><path d="M600.3,59 C602.9,61.6 602.1,62.0 602.1,64.8 A1.7,1.7 0 0 0 605.5,64.8 C605.5,62.0 604.7,61.6 607.2,59 Z"/></g>
+<path d="M60.0,40 H259.2" stroke="url(#l)" stroke-width="3" stroke-dasharray="5 2"/><path d="M60.0,40 H259.2" stroke="#030D17" stroke-opacity=".55" stroke-width="1" stroke-dasharray="1.5 5.5" stroke-dashoffset="-3"/><path d="M740.8,40 H940.0" stroke="url(#r)" stroke-width="3" stroke-dasharray="5 2"/><path d="M740.8,40 H940.0" stroke="#030D17" stroke-opacity=".55" stroke-width="1" stroke-dasharray="1.5 5.5" stroke-dashoffset="-3"/>
+<circle cx="263.2" cy="40" r="4" fill="none" stroke="#E8B53A" stroke-width="2"/><circle cx="736.8" cy="40" r="4" fill="none" stroke="#E8B53A" stroke-width="2"/>
+<svg x="293" y="14" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="28" r="16" fill="#6E4A9E"/><path d="M14,24 q4,-6 8,0 t8,0 t6,-2 M12,31 q4,-6 8,0 t8,0 t8,0 M16,38 q4,-5 8,0 t8,0" stroke="#C7A9EC" stroke-width="2" fill="none" stroke-linecap="round"/>
+<path d="M24,12 q1,-5 5,-7" stroke="#8A6218" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M27,8 q8,-5 12,2 q-7,3 -12,-2z" fill="#5E9B5A"/></svg>
+<text x="355.2" y="51" font-family="Rockwell,'Roboto Slab',Clarendon,Georgia,serif" font-weight="900" font-size="30" letter-spacing="1" fill="url(#gold)" stroke="#3B2513" stroke-width=".8" paint-order="stroke">Devil Fruit Arsenal</text>
+<path d="M355.2,64 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 q5,-4 10,0 q5,4 10,0 " fill="none" stroke="#2E86AB" stroke-width="1.6" stroke-linecap="round"/>
 </svg>
